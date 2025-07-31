@@ -1,0 +1,232 @@
+[gd_scene load_steps=6 format=3 uid="uid://cwe8xvhdal7gy"]
+
+[ext_resource type="Script" uid="uid://duhcfdhg1cja6" path="res://Player/PlayerCharacter.gd" id="1_4ntmi"]
+[ext_resource type="Script" uid="uid://b0ebgwreoykio" path="res://Player/LoopControl.gd" id="1_gwnis"]
+[ext_resource type="Script" uid="uid://bhkr2i22s7c7e" path="res://Player/FPSCamera.gd" id="2_btcbx"]
+[ext_resource type="Script" uid="uid://sn885x85oapc" path="res://addons/smoothing/smoothing.gd" id="2_gwnis"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_13wh4"]
+radius = 0.4
+height = 1.8
+
+[node name="Player" type="Node3D"]
+
+[node name="Rendering" type="Control" parent="."]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer6" type="SubViewportContainer" parent="Rendering"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="Rendering/SubViewportContainer6"]
+handle_input_locally = false
+use_occlusion_culling = true
+size = Vector2i(384, 216)
+render_target_update_mode = 4
+
+[node name="Camera6" type="Camera3D" parent="Rendering/SubViewportContainer6/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 120, 0)
+
+[node name="SubViewportContainer5" type="SubViewportContainer" parent="Rendering"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="Rendering/SubViewportContainer5"]
+transparent_bg = true
+handle_input_locally = false
+use_occlusion_culling = true
+size = Vector2i(384, 216)
+render_target_update_mode = 4
+
+[node name="Camera5" type="Camera3D" parent="Rendering/SubViewportContainer5/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 96, 0)
+
+[node name="SubViewportContainer4" type="SubViewportContainer" parent="Rendering"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="Rendering/SubViewportContainer4"]
+transparent_bg = true
+handle_input_locally = false
+use_occlusion_culling = true
+size = Vector2i(576, 324)
+render_target_update_mode = 4
+
+[node name="Camera4" type="Camera3D" parent="Rendering/SubViewportContainer4/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 72, 0)
+
+[node name="SubViewportContainer3" type="SubViewportContainer" parent="Rendering"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="Rendering/SubViewportContainer3"]
+transparent_bg = true
+handle_input_locally = false
+use_occlusion_culling = true
+size = Vector2i(576, 324)
+render_target_update_mode = 4
+
+[node name="Camera3" type="Camera3D" parent="Rendering/SubViewportContainer3/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 48, 0)
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="Rendering"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="Rendering/SubViewportContainer2"]
+transparent_bg = true
+handle_input_locally = false
+use_occlusion_culling = true
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Camera2" type="Camera3D" parent="Rendering/SubViewportContainer2/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 24, 0)
+
+[node name="SubViewportContainer1" type="SubViewportContainer" parent="Rendering"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+mouse_target = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="Rendering/SubViewportContainer1"]
+transparent_bg = true
+handle_input_locally = false
+screen_space_aa = 1
+use_occlusion_culling = true
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Camera1" type="Camera3D" parent="Rendering/SubViewportContainer1/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+current = true
+
+[node name="RemoteTransform2" type="RemoteTransform3D" parent="Rendering/SubViewportContainer1/SubViewport/Camera1"]
+remote_path = NodePath("../../../../SubViewportContainer2/SubViewport/Camera2")
+update_position = false
+
+[node name="RemoteTransform3" type="RemoteTransform3D" parent="Rendering/SubViewportContainer1/SubViewport/Camera1"]
+remote_path = NodePath("../../../../SubViewportContainer3/SubViewport/Camera3")
+update_position = false
+
+[node name="RemoteTransform4" type="RemoteTransform3D" parent="Rendering/SubViewportContainer1/SubViewport/Camera1"]
+remote_path = NodePath("../../../../SubViewportContainer4/SubViewport/Camera4")
+update_position = false
+
+[node name="RemoteTransform5" type="RemoteTransform3D" parent="Rendering/SubViewportContainer1/SubViewport/Camera1"]
+remote_path = NodePath("../../../../SubViewportContainer5/SubViewport/Camera5")
+update_position = false
+
+[node name="RemoteTransform6" type="RemoteTransform3D" parent="Rendering/SubViewportContainer1/SubViewport/Camera1"]
+remote_path = NodePath("../../../../SubViewportContainer6/SubViewport/Camera6")
+update_position = false
+
+[node name="LoopControl" type="Node" parent="." node_paths=PackedStringArray("RemotePositions", "PlayerChar")]
+script = ExtResource("1_gwnis")
+RemotePositions = [NodePath("../FPSCamera/RemotePosition2"), NodePath("../FPSCamera/RemotePosition2/RemotePosition3"), NodePath("../FPSCamera/RemotePosition2/RemotePosition3/RemotePosition4"), NodePath("../FPSCamera/RemotePosition2/RemotePosition3/RemotePosition4/RemotePosition5"), NodePath("../FPSCamera/RemotePosition2/RemotePosition3/RemotePosition4/RemotePosition5/RemotePosition6")]
+PlayerChar = NodePath("../PlayerCharacter")
+
+[node name="PlayerCharacter" type="CharacterBody3D" parent="." node_paths=PackedStringArray("camera_rig", "model")]
+physics_interpolation_mode = 1
+script = ExtResource("1_4ntmi")
+_control_enabled = true
+camera_rig = NodePath("../FPSCamera")
+jump_precharge = false
+rotateToFaceMovement = false
+model = NodePath("Smoothing")
+metadata/_custom_type_script = "uid://duhcfdhg1cja6"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCharacter"]
+shape = SubResource("CapsuleShape3D_13wh4")
+
+[node name="Smoothing" type="Node3D" parent="PlayerCharacter"]
+script = ExtResource("2_gwnis")
+metadata/_custom_type_script = "uid://sn885x85oapc"
+
+[node name="Smooth" type="Node3D" parent="PlayerCharacter/Smoothing"]
+
+[node name="FPSCamera" type="Node3D" parent="." node_paths=PackedStringArray("CameraSubject")]
+script = ExtResource("2_btcbx")
+CameraSubject = NodePath("../PlayerCharacter/Smoothing/Smooth")
+metadata/_custom_type_script = "uid://bhkr2i22s7c7e"
+
+[node name="Pivot" type="Node3D" parent="FPSCamera"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="RemoteTransform1" type="RemoteTransform3D" parent="FPSCamera/Pivot"]
+remote_path = NodePath("../../../Rendering/SubViewportContainer1/SubViewport/Camera1")
+
+[node name="RemotePosition2" type="RemoteTransform3D" parent="FPSCamera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0)
+remote_path = NodePath("../../Rendering/SubViewportContainer2/SubViewport/Camera2")
+update_rotation = false
+update_scale = false
+
+[node name="RemotePosition3" type="RemoteTransform3D" parent="FPSCamera/RemotePosition2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0)
+remote_path = NodePath("../../../Rendering/SubViewportContainer3/SubViewport/Camera3")
+update_rotation = false
+update_scale = false
+
+[node name="RemotePosition4" type="RemoteTransform3D" parent="FPSCamera/RemotePosition2/RemotePosition3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0)
+remote_path = NodePath("../../../../Rendering/SubViewportContainer4/SubViewport/Camera4")
+update_rotation = false
+update_scale = false
+
+[node name="RemotePosition5" type="RemoteTransform3D" parent="FPSCamera/RemotePosition2/RemotePosition3/RemotePosition4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0)
+remote_path = NodePath("../../../../../Rendering/SubViewportContainer5/SubViewport/Camera5")
+update_rotation = false
+update_scale = false
+
+[node name="RemotePosition6" type="RemoteTransform3D" parent="FPSCamera/RemotePosition2/RemotePosition3/RemotePosition4/RemotePosition5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0)
+remote_path = NodePath("../../../../../../Rendering/SubViewportContainer6/SubViewport/Camera6")
+update_rotation = false
+update_scale = false
