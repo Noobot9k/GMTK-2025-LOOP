@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://c5wvl417ooks3" path="res://GenericMaterials/PavingStones016/PavingStones016_2K-JPG_Roughness.jpg" id="3_djvm2"]
 
 [resource]
-transparency = 4
 albedo_texture = ExtResource("1_5e3gi")
 roughness_texture = ExtResource("3_djvm2")
 normal_enabled = true
@@ -15,6 +14,5 @@ ao_enabled = true
 ao_texture = ExtResource("2_djvm2")
 uv1_scale = Vector3(0.2, 0.2, 0.2)
 uv1_triplanar = true
-stencil_mode = 3
 stencil_flags = 1
 stencil_compare = 5
