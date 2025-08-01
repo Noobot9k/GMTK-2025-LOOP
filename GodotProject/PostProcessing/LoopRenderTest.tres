@@ -1,0 +1,46 @@
+[gd_resource type="VisualShader" load_steps=4 format=3 uid="uid://yp8rvnochft4"]
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_dbim1"]
+parameter_name = "LOOP_TEXTURE"
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_36acd"]
+source = 5
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_f5qi2"]
+input_name = "screen_uv"
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded, shadows_disabled, ambient_light_disabled, fog_disabled;
+
+uniform sampler2D LOOP_TEXTURE;
+
+
+
+void fragment() {
+// Input:4
+	vec2 n_out4p0 = SCREEN_UV;
+
+
+	vec4 n_out3p0;
+// Texture2D:3
+	n_out3p0 = texture(LOOP_TEXTURE, n_out4p0);
+
+
+// Output:0
+	ALBEDO = vec3(n_out3p0.xyz);
+
+
+}
+"
+flags/unshaded = true
+flags/shadows_disabled = true
+flags/ambient_light_disabled = true
+flags/fog_disabled = true
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture2DParameter_dbim1")
+nodes/fragment/2/position = Vector2(-674.6102, 285.47644)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_36acd")
+nodes/fragment/3/position = Vector2(-234.61023, 345.47644)
+nodes/fragment/4/node = SubResource("VisualShaderNodeInput_f5qi2")
+nodes/fragment/4/position = Vector2(-660, 180)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 3, 0, 0, 0, 4, 0, 3, 0)

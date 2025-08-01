@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://2hlgssnsobk1"]
+[gd_scene load_steps=6 format=3 uid="uid://2hlgssnsobk1"]
 
 [ext_resource type="PackedScene" uid="uid://cwe8xvhdal7gy" path="res://Player/player.tscn" id="1_dd4pd"]
 [ext_resource type="Material" uid="uid://0i67fpbkt4cv" path="res://GenericMaterials/PavingStones016/PavingStones016.tres" id="2_eupyd"]
@@ -6,12 +6,26 @@
 
 [sub_resource type="Environment" id="Environment_eupyd"]
 background_mode = 1
+background_color = Color(0, 0, 1, 1)
+ambient_light_source = 1
 tonemap_mode = 2
 fog_enabled = true
 fog_light_color = Color(0, 0, 0, 1)
 fog_density = 0.0615
+fog_sky_affect = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ijjyi"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+stencil_mode = 3
+stencil_flags = 2
 
 [node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 1.0
 
 [node name="Player" parent="." instance=ExtResource("1_dd4pd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.5)
@@ -61,3 +75,9 @@ flip_faces = true
 radius = 16.0
 height = 300.0
 sides = 32
+
+[node name="CSGBox3D_Stencil" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.5, 0)
+visible = false
+size = Vector3(38, 1, 45)
+material = SubResource("StandardMaterial3D_ijjyi")
