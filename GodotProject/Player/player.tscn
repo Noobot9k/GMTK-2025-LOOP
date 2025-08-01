@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cwe8xvhdal7gy"]
+[gd_scene load_steps=21 format=3 uid="uid://cwe8xvhdal7gy"]
 
 [ext_resource type="Script" uid="uid://duhcfdhg1cja6" path="res://Player/PlayerCharacter.gd" id="1_4ntmi"]
 [ext_resource type="Script" uid="uid://b0ebgwreoykio" path="res://Player/LoopControl.gd" id="1_gwnis"]
@@ -8,40 +8,35 @@
 [ext_resource type="Script" uid="uid://sn885x85oapc" path="res://addons/smoothing/smoothing.gd" id="2_gwnis"]
 [ext_resource type="Script" uid="uid://de4qshtrfbpyy" path="res://PostProcessing/LoopRenderSurface.gd" id="2_vtle1"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_vtle1"]
-viewport_path = NodePath("Player/Rendering/SubViewportContainer3/SubViewport3")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_00tjw"]
-render_priority = 0
-shader = ExtResource("2_fhl08")
-shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_vtle1")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_od3ui"]
-size = Vector2(32, 32)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_od3ui"]
-viewport_path = NodePath("Player/Rendering/SubViewportContainer6/SubViewport6")
+[sub_resource type="ViewportTexture" id="ViewportTexture_x3vf3"]
+viewport_path = NodePath("Rendering/SubViewportContainer6/SubViewport6")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_apopc"]
 render_priority = 0
 shader = ExtResource("2_fhl08")
-shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_od3ui")
+shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_x3vf3")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_00tjw"]
-viewport_path = NodePath("Player/Rendering/SubViewportContainer5/SubViewport5")
+[sub_resource type="PlaneMesh" id="PlaneMesh_od3ui"]
+size = Vector2(32, 32)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5htga"]
+viewport_path = NodePath("Rendering/SubViewportContainer5/SubViewport5")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p5o4e"]
 render_priority = 0
 shader = ExtResource("2_fhl08")
-shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_00tjw")
+shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_5htga")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_x3vf3"]
-viewport_path = NodePath("Player/Rendering/SubViewportContainer4/SubViewport4")
+[sub_resource type="ViewportTexture" id="ViewportTexture_gu6f8"]
+viewport_path = NodePath("Rendering/SubViewportContainer4/SubViewport4")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dkpta"]
 render_priority = 0
 shader = ExtResource("2_fhl08")
-shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_x3vf3")
+shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_gu6f8")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vtle1"]
+viewport_path = NodePath("Rendering/SubViewportContainer3/SubViewport3")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_od3ui"]
 render_priority = 0
@@ -51,13 +46,13 @@ shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_vtle1")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fhl08"]
 shader = ExtResource("1_k53q1")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_apopc"]
-viewport_path = NodePath("Player/Rendering/SubViewportContainer2/SubViewport2")
+[sub_resource type="ViewportTexture" id="ViewportTexture_od3ui"]
+viewport_path = NodePath("Rendering/SubViewportContainer2/SubViewport2")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vtle1"]
 render_priority = 0
 shader = ExtResource("2_fhl08")
-shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_apopc")
+shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_od3ui")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_13wh4"]
 radius = 0.4
@@ -94,15 +89,6 @@ render_target_update_mode = 4
 [node name="Camera6" type="Camera3D" parent="Rendering/SubViewportContainer6/SubViewport6"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 120, 0)
 cull_mask = 556543
-
-[node name="LoopRenderSurface" type="MeshInstance3D" parent="Rendering/SubViewportContainer6/SubViewport6" node_paths=PackedStringArray("SourceViewport")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12, 0)
-visible = false
-layers = 524288
-material_override = SubResource("ShaderMaterial_00tjw")
-mesh = SubResource("PlaneMesh_od3ui")
-script = ExtResource("2_vtle1")
-SourceViewport = NodePath("../../../SubViewportContainer3/SubViewport3")
 
 [node name="SubViewportContainer5" type="SubViewportContainer" parent="Rendering"]
 layout_mode = 1
@@ -271,7 +257,6 @@ remote_path = NodePath("../../../../SubViewportContainer4/SubViewport4/LoopRende
 remote_path = NodePath("../../../../SubViewportContainer5/SubViewport5/LoopRenderSurface")
 
 [node name="RemoteTransform6" type="RemoteTransform3D" parent="Rendering/SubViewportContainer1/SubViewport1/LoopRenderSurface"]
-remote_path = NodePath("../../../../SubViewportContainer6/SubViewport6/LoopRenderSurface")
 
 [node name="Camera1" type="Camera3D" parent="Rendering/SubViewportContainer1/SubViewport1"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
