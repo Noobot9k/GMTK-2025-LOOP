@@ -1,67 +1,71 @@
-[gd_scene load_steps=24 format=3 uid="uid://cwe8xvhdal7gy"]
+[gd_scene load_steps=60 format=3 uid="uid://cwe8xvhdal7gy"]
 
 [ext_resource type="Script" uid="uid://duhcfdhg1cja6" path="res://Player/PlayerCharacter.gd" id="1_4ntmi"]
+[ext_resource type="Script" uid="uid://c3hhu4vxpu2l" path="res://Nodes/EquippableAbilityManager.gd" id="1_5htga"]
 [ext_resource type="Script" uid="uid://b0ebgwreoykio" path="res://Player/LoopControl.gd" id="1_gwnis"]
 [ext_resource type="Script" uid="uid://bhkr2i22s7c7e" path="res://Player/FPSCamera.gd" id="2_btcbx"]
 [ext_resource type="Shader" uid="uid://yp8rvnochft4" path="res://PostProcessing/LoopRenderSurface.tres" id="2_fhl08"]
 [ext_resource type="Script" uid="uid://sn885x85oapc" path="res://addons/smoothing/smoothing.gd" id="2_gwnis"]
+[ext_resource type="Script" uid="uid://uc5gyymhxa6c" path="res://Nodes/EquippableAbility.gd" id="2_p5o4e"]
 [ext_resource type="Script" uid="uid://de4qshtrfbpyy" path="res://PostProcessing/LoopRenderSurface.gd" id="2_vtle1"]
 [ext_resource type="Shader" uid="uid://ddextfjtoqijs" path="res://PostProcessing/PPCanvas_Posterization.tres" id="3_vtle1"]
 [ext_resource type="Script" uid="uid://b0lbskf8aydt7" path="res://Nodes/FPSCounter.gd" id="5_od3ui"]
+[ext_resource type="PackedScene" uid="uid://btu3fuy2o08os" path="res://Objects/Torch/torch.tscn" id="9_00tjw"]
+[ext_resource type="Script" uid="uid://byllibf7r26ld" path="res://Nodes/ViewModel.gd" id="12_gu6f8"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_fhl08"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_5htga"]
 viewport_path = NodePath("Rendering/SubViewportContainer6/SubViewport6")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_apopc"]
 render_priority = 0
 shader = ExtResource("2_fhl08")
 shader_parameter/TestTint = Color(1, 1, 1, 1)
-shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_fhl08")
+shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_5htga")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_od3ui"]
 size = Vector2(32, 32)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_vtle1"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_p5o4e"]
 viewport_path = NodePath("Rendering/SubViewportContainer5/SubViewport5")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p5o4e"]
 render_priority = 0
 shader = ExtResource("2_fhl08")
 shader_parameter/TestTint = Color(1, 1, 1, 1)
-shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_vtle1")
+shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_p5o4e")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_od3ui"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_gu6f8"]
 viewport_path = NodePath("Rendering/SubViewportContainer4/SubViewport4")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dkpta"]
 render_priority = 0
 shader = ExtResource("2_fhl08")
 shader_parameter/TestTint = Color(1, 1, 1, 1)
-shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_od3ui")
+shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_gu6f8")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_00tjw"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_dkpta"]
 viewport_path = NodePath("Rendering/SubViewportContainer3/SubViewport3")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_od3ui"]
 render_priority = 0
 shader = ExtResource("2_fhl08")
 shader_parameter/TestTint = Color(1, 1, 1, 1)
-shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_00tjw")
+shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_dkpta")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_x3vf3"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_lfmf2"]
 viewport_path = NodePath("Rendering/SubViewportContainer2/SubViewport2")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vtle1"]
 render_priority = 0
 shader = ExtResource("2_fhl08")
 shader_parameter/TestTint = Color(1, 1, 1, 1)
-shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_x3vf3")
+shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_lfmf2")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x3vf3"]
 render_priority = 0
 shader = ExtResource("2_fhl08")
 shader_parameter/TestTint = Color(1, 1, 1, 1)
-shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_fhl08")
+shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_5htga")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_00tjw"]
 shader = ExtResource("3_vtle1")
@@ -74,7 +78,240 @@ font_size = 71
 radius = 0.4
 height = 1.8
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_p5o4e"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="Animation" id="Animation_5htga"]
+resource_name = "Idle"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torch")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.5036776, -0.13951361, -0.59074724, 1.7, 1, 0.5036776, -0.13258797, -0.5905873, 3, 1, 0.5036776, -0.13951361, -0.59074724)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Torch")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.9, 1, 0.011588727, 0, 0, 0.9999328, 3, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_p5o4e"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torch")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.5036776, -0.13951361, -0.59074724)
+
+[sub_resource type="Animation" id="Animation_gu6f8"]
+resource_name = "Walk"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torch")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.4812113, -0.13951361, -0.616998, 0.5, 1, 0.5019636, -0.10771716, -0.59654015, 1, 1, 0.522716, -0.13951361, -0.5760823, 1.5000001, 1, 0.5019636, -0.10771716, -0.59654015)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Torch")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0.3, 1, 0, 0, 0, 1, 1.3000001, 1, 0.0061860825, -0.00011505264, -0.018595053, 0.99980795)
+
+[sub_resource type="Animation" id="Animation_dkpta"]
+resource_name = "Falling"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torch")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.48897606, -0.15383512, -0.61703587, 0.03333333, 1, 0.4623255, -0.15383512, -0.6557354, 0.06666668, 1, 0.47075328, -0.13165885, -0.63441503, 0.099999994, 1, 0.45815954, -0.11608122, -0.6613488, 0.13333334, 1, 0.46831045, -0.12902924, -0.6202386, 0.16666667, 1, 0.4982831, -0.15383512, -0.62345666)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Torch")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.006841244, 7.3375486e-05, -0.010724591, 0.99991906, 0.03333333, 1, 0.022267278, -0.00023882679, -0.010722184, 0.99969447, 0.06666668, 1, 0.02487352, -0.00032358343, 0.00040459784, 0.9996904, 0.099999994, 1, 0.0067730597, -0.0006353922, -0.002686083, 0.9999732, 0.13333334, 1, -0.0010604493, -0.00019920763, -0.013783112, 0.99990433, 0.16666667, 1, 0.026639469, -0.00067501416, 0.0038819662, 0.99963725)
+
+[sub_resource type="Animation" id="Animation_lfmf2"]
+resource_name = "Jump"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torch")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.5036776, -0.3738289, -0.58444595, 0.2, 1, 0.5036776, -0.07837427, -0.5765185, 0.5, 1, 0.5036776, -0.13951361, -0.59074724, 1, 1, 0.5036776, -0.13951361, -0.59074724)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Torch")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.2338102, 0, 0, 0.9722821, 0.2, 1, 0.29832223, -0.011217171, -0.06996856, 0.951831, 0.5, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_pisgm"]
+resource_name = "Landed"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torch")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.5036776, -0.13951361, -0.59074724, 0.13333334, 1, 0.5036776, -0.5156188, -0.59074724, 0.8333333, 1, 0.5036776, -0.13951361, -0.59074724)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Torch")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.9999999, 0.3, 1, -0.3911006, 0, 0, 0.92034787, 1, 1, 0, 0, 0, 0.9999999)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gu6f8"]
+_data = {
+&"Falling": SubResource("Animation_dkpta"),
+&"Idle": SubResource("Animation_5htga"),
+&"Jump": SubResource("Animation_lfmf2"),
+&"Landed": SubResource("Animation_pisgm"),
+&"RESET": SubResource("Animation_p5o4e"),
+&"Walk": SubResource("Animation_gu6f8")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5htga"]
+animation = &"Falling"
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_p5o4e"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gu6f8"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_dkpta"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_lfmf2"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_5htga"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pisgm"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_b1ygp"]
+graph_offset = Vector2(-361.67725, 87.505585)
+nodes/output/position = Vector2(620, 200)
+nodes/Walking/node = SubResource("AnimationNodeAnimation_pisgm")
+nodes/Walking/position = Vector2(-300, 260)
+nodes/Idling/node = SubResource("AnimationNodeAnimation_gu6f8")
+nodes/Idling/position = Vector2(80, 100)
+nodes/WalkAlpha/node = SubResource("AnimationNodeBlend2_dkpta")
+nodes/WalkAlpha/position = Vector2(260, 120)
+nodes/WalkSpeed/node = SubResource("AnimationNodeTimeScale_lfmf2")
+nodes/WalkSpeed/position = Vector2(80, 260)
+nodes/Falling/node = SubResource("AnimationNodeAnimation_5htga")
+nodes/Falling/position = Vector2(80, 440)
+nodes/FallingAlpha/node = SubResource("AnimationNodeAdd2_p5o4e")
+nodes/FallingAlpha/position = Vector2(460, 200)
+nodes/WalkSpeedMultiplier/node = SubResource("AnimationNodeTimeScale_5htga")
+nodes/WalkSpeedMultiplier/position = Vector2(-140, 260)
+node_connections = [&"output", 0, &"FallingAlpha", &"WalkAlpha", 0, &"Idling", &"WalkAlpha", 1, &"WalkSpeed", &"WalkSpeed", 0, &"WalkSpeedMultiplier", &"FallingAlpha", 0, &"WalkAlpha", &"FallingAlpha", 1, &"Falling", &"WalkSpeedMultiplier", 0, &"Walking"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o28un"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n471f"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dkpta"]
+animation = &"Jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lfmf2"]
+animation = &"Landed"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7emwf"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hshwv"]
+advance_mode = 2
+advance_condition = &"JumpHeld"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8mwp6"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8viyr"]
+advance_mode = 2
+advance_expression = "not get(\"parameters/StateMachine/conditions/IsGrounded\")"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sm0op"]
+advance_mode = 2
+advance_condition = &"IsGrounded"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5htga"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p5o4e"]
+advance_mode = 2
+advance_condition = &"IsGrounded"
+advance_expression = "not get(\"parameters/StateMachine/conditions/JumpHeld\")"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gu6f8"]
+advance_mode = 2
+advance_condition = &"JumpHeld"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dkpta"]
+advance_mode = 2
+advance_expression = "not get(\"parameters/StateMachine/conditions/IsGrounded\")"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_76lrf"]
+states/Airborne/node = SubResource("AnimationNodeAnimation_o28un")
+states/Airborne/position = Vector2(660, -33)
+states/Grounded/node = SubResource("AnimationNodeAnimation_n471f")
+states/Grounded/position = Vector2(384, 100)
+states/Jump/node = SubResource("AnimationNodeAnimation_dkpta")
+states/Jump/position = Vector2(384, -33)
+states/Landed/node = SubResource("AnimationNodeAnimation_lfmf2")
+states/Landed/position = Vector2(660, 100)
+transitions = ["Start", "Grounded", SubResource("AnimationNodeStateMachineTransition_7emwf"), "Grounded", "Jump", SubResource("AnimationNodeStateMachineTransition_hshwv"), "Landed", "Grounded", SubResource("AnimationNodeStateMachineTransition_8mwp6"), "Grounded", "Airborne", SubResource("AnimationNodeStateMachineTransition_8viyr"), "Airborne", "Landed", SubResource("AnimationNodeStateMachineTransition_sm0op"), "Jump", "Airborne", SubResource("AnimationNodeStateMachineTransition_5htga"), "Jump", "Landed", SubResource("AnimationNodeStateMachineTransition_p5o4e"), "Landed", "Jump", SubResource("AnimationNodeStateMachineTransition_gu6f8"), "Landed", "Airborne", SubResource("AnimationNodeStateMachineTransition_dkpta")]
+graph_offset = Vector2(36, -164)
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_5htga"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_o28un"]
+graph_offset = Vector2(-428.81335, -113.49013)
+nodes/output/position = Vector2(520, 20)
+nodes/Movement/node = SubResource("AnimationNodeBlendTree_b1ygp")
+nodes/Movement/position = Vector2(0, 160)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_76lrf")
+nodes/StateMachine/position = Vector2(-60, -100)
+nodes/_/node = SubResource("AnimationNodeAdd2_5htga")
+nodes/_/position = Vector2(275.20532, 3.8608599)
+node_connections = [&"output", 0, &"_", &"_", 0, &"StateMachine", &"_", 1, &"Movement"]
+
 [node name="Player" type="Node3D"]
+
+[node name="EquippableAbilityManager" type="Node" parent="."]
+script = ExtResource("1_5htga")
+metadata/_custom_type_script = "uid://c3hhu4vxpu2l"
+
+[node name="EquippableAbility" type="Node3D" parent="EquippableAbilityManager"]
+script = ExtResource("2_p5o4e")
+Active = true
+metadata/_custom_type_script = "uid://uc5gyymhxa6c"
 
 [node name="LoopControl" type="Node" parent="." node_paths=PackedStringArray("Renderers", "CameraTransform", "RemotePositions", "ReverseRemotePosition", "RenderSurface", "ReverseRenderSurface", "PlayerChar")]
 script = ExtResource("1_gwnis")
@@ -114,7 +351,7 @@ size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
 [node name="Camera6" type="Camera3D" parent="Rendering/SubViewportContainer6/SubViewport6"]
-transform = Transform3D(1, 0, 0, 0, 0.017452383, 0.9998477, 0, -0.9998477, 0.017452383, 0, -24, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -23.3, 0)
 cull_mask = 556543
 
 [node name="SubViewportContainer5" type="SubViewportContainer" parent="Rendering"]
@@ -134,7 +371,7 @@ size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
 [node name="Camera5" type="Camera3D" parent="Rendering/SubViewportContainer5/SubViewport5"]
-transform = Transform3D(1, 0, 0, 0, 0.017452383, 0.9998477, 0, -0.9998477, 0.017452383, 0, 96, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 96.7, 0)
 cull_mask = 294399
 
 [node name="LoopRenderSurface" type="MeshInstance3D" parent="Rendering/SubViewportContainer5/SubViewport5" node_paths=PackedStringArray("SourceViewport")]
@@ -165,7 +402,7 @@ size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
 [node name="Camera4" type="Camera3D" parent="Rendering/SubViewportContainer4/SubViewport4"]
-transform = Transform3D(1, 0, 0, 0, 0.017452383, 0.9998477, 0, -0.9998477, 0.017452383, 0, 72, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 72.7, 0)
 cull_mask = 163327
 
 [node name="LoopRenderSurface" type="MeshInstance3D" parent="Rendering/SubViewportContainer4/SubViewport4" node_paths=PackedStringArray("SourceViewport")]
@@ -194,7 +431,7 @@ size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
 [node name="Camera3" type="Camera3D" parent="Rendering/SubViewportContainer3/SubViewport3"]
-transform = Transform3D(1, 0, 0, 0, 0.017452383, 0.9998477, 0, -0.9998477, 0.017452383, 0, 48, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48.7, 0)
 cull_mask = 97791
 
 [node name="LoopRenderSurface" type="MeshInstance3D" parent="Rendering/SubViewportContainer3/SubViewport3" node_paths=PackedStringArray("SourceViewport")]
@@ -224,7 +461,7 @@ size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
 [node name="Camera2" type="Camera3D" parent="Rendering/SubViewportContainer2/SubViewport2"]
-transform = Transform3D(1, 0, 0, 0, 0.017452383, 0.9998477, 0, -0.9998477, 0.017452383, 0, 24, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.7, 0)
 cull_mask = 65023
 
 [node name="LoopRenderSurface" type="MeshInstance3D" parent="Rendering/SubViewportContainer2/SubViewport2" node_paths=PackedStringArray("SourceViewport")]
@@ -286,7 +523,7 @@ script = ExtResource("2_vtle1")
 SourceViewport = NodePath("../../../SubViewportContainer6/SubViewport6")
 
 [node name="Camera1" type="Camera3D" parent="Rendering/SubViewportContainer1/SubViewport1"]
-transform = Transform3D(1, 0, 0, 0, 0.017452383, 0.9998477, 0, -0.9998477, 0.017452383, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 cull_mask = 32767
 
 [node name="RemoteTransform2" type="RemoteTransform3D" parent="Rendering/SubViewportContainer1/SubViewport1/Camera1"]
@@ -377,16 +614,55 @@ metadata/_custom_type_script = "uid://sn885x85oapc"
 
 [node name="Smooth" type="Node3D" parent="PlayerCharacter/Smoothing"]
 
+[node name="Visual" type="MeshInstance3D" parent="PlayerCharacter/Smoothing"]
+layers = 1015808
+mesh = SubResource("CapsuleMesh_p5o4e")
+skeleton = NodePath("../..")
+
 [node name="FPSCamera" type="Node3D" parent="." node_paths=PackedStringArray("CameraSubject")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 script = ExtResource("2_btcbx")
 CameraSubject = NodePath("../PlayerCharacter/Smoothing/Smooth")
 metadata/_custom_type_script = "uid://bhkr2i22s7c7e"
 
 [node name="Pivot" type="Node3D" parent="FPSCamera"]
-transform = Transform3D(1, 0, 0, 0, 0.017452383, 0.9998477, 0, -0.9998477, 0.017452383, 0, 0, 0)
 
 [node name="RemoteTransform1" type="RemoteTransform3D" parent="FPSCamera/Pivot"]
 remote_path = NodePath("../../../Rendering/SubViewportContainer1/SubViewport1/Camera1")
+
+[node name="Camera3D" type="Camera3D" parent="FPSCamera/Pivot"]
+visible = false
+
+[node name="ViewModel" type="Node3D" parent="FPSCamera/Pivot" node_paths=PackedStringArray("Char")]
+script = ExtResource("12_gu6f8")
+Char = NodePath("../../../PlayerCharacter")
+ATP_JumpHeld = "parameters/StateMachine/conditions/JumpHeld"
+ATP_Grounded = "parameters/StateMachine/conditions/IsGrounded"
+ATP_MovementBlendAmount = "parameters/Movement/WalkAlpha/blend_amount"
+ATP_MovementBlendScale = "parameters/Movement/WalkSpeed/scale"
+metadata/_custom_type_script = "uid://byllibf7r26ld"
+
+[node name="Torch" parent="FPSCamera/Pivot/ViewModel" instance=ExtResource("9_00tjw")]
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99968815, -0.02496336, 0, 0.024963358, 0.9996882, 0.5036776, -0.13951361, -0.59074724)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FPSCamera/Pivot/ViewModel"]
+libraries = {
+&"": SubResource("AnimationLibrary_gu6f8")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="FPSCamera/Pivot/ViewModel"]
+libraries = {
+&"": SubResource("AnimationLibrary_gu6f8")
+}
+tree_root = SubResource("AnimationNodeBlendTree_o28un")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Movement/WalkAlpha/blend_amount = 0.0
+parameters/Movement/WalkSpeed/scale = 1.0
+parameters/Movement/FallingAlpha/add_amount = 0.0
+parameters/Movement/WalkSpeedMultiplier/scale = 3.0
+parameters/StateMachine/conditions/IsGrounded = true
+parameters/StateMachine/conditions/JumpHeld = false
+parameters/_/add_amount = 1.0
 
 [node name="RemotePosition2" type="RemoteTransform3D" parent="FPSCamera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://2hlgssnsobk1"]
+[gd_scene load_steps=16 format=4 uid="uid://2hlgssnsobk1"]
 
 [ext_resource type="PackedScene" uid="uid://cwe8xvhdal7gy" path="res://Player/player.tscn" id="1_dd4pd"]
 [ext_resource type="Material" uid="uid://0i67fpbkt4cv" path="res://GenericMaterials/PavingStones016/PavingStones016.tres" id="2_eupyd"]
@@ -9,11 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://bmtpnxq74bw84" path="res://Objects/Mushrooms/MushroomMulti.tscn" id="6_2cjdh"]
 [ext_resource type="LightmapGIData" uid="uid://d4a7yu6e3583f" path="res://WorldScenes/LoopRenderTest.lmbake" id="7_axvlr"]
 [ext_resource type="PackedScene" uid="uid://capcxx4lkn6e0" path="res://Objects/Mushrooms/MushroomMany.tscn" id="8_w0qgj"]
+[ext_resource type="PackedScene" uid="uid://b1gnb5nefuy8" path="res://Objects/Lanturn/LanturnHanging.tscn" id="10_5sy55"]
+[ext_resource type="PackedScene" uid="uid://1ikpi0pe0qft" path="res://Objects/Pedestal/Pedestal.glb" id="11_shq7x"]
 
 [sub_resource type="Environment" id="Environment_eupyd"]
 background_mode = 1
 ambient_light_source = 1
 tonemap_mode = 4
+glow_enabled = true
+glow_bloom = 0.2
+glow_hdr_luminance_cap = 256.0
 fog_enabled = true
 fog_light_color = Color(0, 0, 0, 1)
 fog_density = 0.03
@@ -36,7 +41,7 @@ _surfaces = [{
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ijjyi"]
 albedo_color = Color(0, 0, 0, 1)
 emission_enabled = true
-emission = Color(0.30588236, 0.45490196, 0.6, 1)
+emission = Color(0.99472916, 1.4281952, 1.8502543, 1)
 emission_energy_multiplier = 3.53
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_13wh4"]
@@ -46,6 +51,7 @@ size = Vector2(4, 4)
 [node name="Level" type="Node3D"]
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
+directional = true
 light_data = ExtResource("7_axvlr")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -159,7 +165,13 @@ transform = Transform3D(0.24202345, 0, 0.9702704, 0, 1, 0, -0.9702704, 0, 0.2420
 transform = Transform3D(-0.48903236, 0, -0.87226564, 0, 1, 0, 0.87226564, 0, -0.48903236, -7.3134522, -10.69432, 22.881926)
 
 [node name="MushroomMany" parent="Rooms/EntryRoom/Decoration" instance=ExtResource("8_w0qgj")]
-transform = Transform3D(0.9418054, 0, -0.33615848, 0, 1, 0, 0.33615848, 0, 0.9418054, -2.2543917, -10.868157, 17.666769)
+transform = Transform3D(0.9418054, 0, -0.33615848, 0, 1, 0, 0.33615848, 0, 0.9418054, -1.6855831, -11.0035515, 16.967087)
+
+[node name="MushroomMany2" parent="Rooms/EntryRoom/Decoration" instance=ExtResource("8_w0qgj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9463204, -11.084843, 6.629668)
+
+[node name="MushroomMulti2" parent="Rooms/EntryRoom/Decoration" instance=ExtResource("6_2cjdh")]
+transform = Transform3D(-0.9962959, 0.026335577, -0.08185879, 0.07946181, 0.6458082, -0.7593535, 0.03286706, -0.76304555, -0.64550877, 0.6272242, -11.2571945, 5.138136)
 
 [node name="Balcony" type="Node3D" parent="Rooms/EntryRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -7)
@@ -173,32 +185,101 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 7.4872103)
 [node name="MainShaft" type="Node3D" parent="Rooms"]
 
 [node name="MushroomMany2" parent="Rooms/MainShaft" instance=ExtResource("8_w0qgj")]
-transform = Transform3D(0.0029038356, -0.9184905, -0.3954326, 0.9999955, 0.002939735, 0.00051512866, 0.00068932027, -0.39543232, 0.91849494, 7.0813003, -10.017458, 3.67689)
+transform = Transform3D(0.0029038356, -0.9184905, -0.3954326, 0.9999955, 0.002939735, 0.00051512866, 0.00068932027, -0.39543232, 0.91849494, 7.0616536, -16.783226, 3.6722262)
+
+[node name="MushroomMany5" parent="Rooms/MainShaft" instance=ExtResource("8_w0qgj")]
+transform = Transform3D(0.0029038358, -0.8919286, 0.45216727, 0.9999955, 0.0022783305, -0.0019278622, 0.00068932003, 0.45217103, 0.8919313, 7.1925807, -18.140339, -3.3132486)
+
+[node name="MushroomMany6" parent="Rooms/MainShaft" instance=ExtResource("8_w0qgj")]
+transform = Transform3D(0.0029038358, -0.5853241, 0.8107944, 0.9999955, 0.001140787, -0.0027579104, 0.0006893199, 0.810799, 0.5853249, 4.863893, -21.953568, -6.343608)
+
+[node name="MushroomMany7" parent="Rooms/MainShaft" instance=ExtResource("8_w0qgj")]
+transform = Transform3D(0.002974349, -0.30466318, 0.9524557, 0.99999565, 0.0011407871, -0.0027579106, -0.00024632114, 0.95246, 0.30466536, 2.419816, -20.917068, -7.60348)
+
+[node name="MushroomMany3" parent="Rooms/MainShaft" instance=ExtResource("8_w0qgj")]
+transform = Transform3D(0.2334257, -0.9711009, -0.049756244, 0.220333, 0.0029844344, 0.97542024, -0.94708276, -0.2386511, 0.21466218, 7.798994, -17.7329, 1.9525088)
+
+[node name="MushroomMany4" parent="Rooms/MainShaft" instance=ExtResource("8_w0qgj")]
+transform = Transform3D(-0.029315522, -0.9986294, 0.043368954, -0.85854256, 0.00293589, -0.51273394, 0.51190364, -0.05226523, -0.8574515, 7.947133, -20.306944, 0.7092285)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Rooms/MainShaft"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.702305, -11.044, 0.31)
+visible = false
 light_energy = 3.059
 light_bake_mode = 1
 shadow_enabled = true
+editor_only = true
 omni_range = 22.081
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Rooms/MainShaft"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9758797, -11.044, 0.31)
+visible = false
 light_energy = 3.059
 light_bake_mode = 1
 shadow_enabled = true
+editor_only = true
 omni_range = 22.081
 
-[node name="Node3D" type="Node3D" parent="Rooms"]
+[node name="MushroomMulti" parent="Rooms/MainShaft" instance=ExtResource("6_2cjdh")]
+transform = Transform3D(0.8620186, -0.4897559, -0.13062525, 0, 0.25770622, -0.96622324, 0.50687647, 0.8329025, 0.22214758, 5.340591, -18.116278, -5.855927)
 
-[node name="Balcony2" type="Node3D" parent="Rooms/Node3D"]
+[node name="MushroomMulti2" parent="Rooms/MainShaft" instance=ExtResource("6_2cjdh")]
+transform = Transform3D(0.022635162, -0.87598294, -0.4818105, 0.010492384, 0.4821155, -0.87604463, 0.9996886, 0.014774054, 0.020103889, 7.9410286, -19.030571, -0.2941599)
+
+[node name="MushroomMulti3" parent="Rooms/MainShaft" instance=ExtResource("6_2cjdh")]
+transform = Transform3D(0.31511635, -0.8777893, -0.36081487, -0.15181008, 0.32866767, -0.93216455, 0.9368325, 0.3485157, -0.029688643, 7.013667, -19.261631, -3.7353642)
+
+[node name="TorchRoom" type="Node3D" parent="Rooms"]
+
+[node name="Interactable" type="Node3D" parent="Rooms/TorchRoom"]
+
+[node name="Torch" parent="Rooms/TorchRoom/Interactable" instance=ExtResource("3_w0qgj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.063505, -28.403635, -14)
+
+[node name="LanturnHanging" parent="Rooms/TorchRoom/Interactable" instance=ExtResource("10_5sy55")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.3388221, -22.063242, -6.271077)
+OnFire = false
+
+[node name="LanturnHanging3" parent="Rooms/TorchRoom/Interactable" instance=ExtResource("10_5sy55")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -16, -30, -14)
+OnFire = false
+
+[node name="Balcony2" type="Node3D" parent="Rooms/TorchRoom"]
 transform = Transform3D(-1, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, -1, 0, -22, 0)
 
-[node name="StoneBalcony" parent="Rooms/Node3D/Balcony2" instance=ExtResource("3_ijjyi")]
+[node name="StoneBalcony" parent="Rooms/TorchRoom/Balcony2" instance=ExtResource("3_ijjyi")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.993824e-07, -0.0635376, 6.9685497)
 
-[node name="StoneArchway" parent="Rooms/Node3D/Balcony2" instance=ExtResource("3_13wh4")]
+[node name="StoneArchway" parent="Rooms/TorchRoom/Balcony2" instance=ExtResource("3_13wh4")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 7.4872103)
 
-[node name="Torch" parent="Rooms/Node3D" instance=ExtResource("3_w0qgj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, -29.403635, -13)
+[node name="Decoration" type="Node3D" parent="Rooms/TorchRoom"]
+
+[node name="MushroomMany8" parent="Rooms/TorchRoom/Decoration" instance=ExtResource("8_w0qgj")]
+transform = Transform3D(0.99689823, 0, -0.0787027, 0, 1.0000005, 0, 0.07870269, 0, 0.99689835, -1.2463855, -22.28527, -10.489328)
+
+[node name="MushroomMulti6" parent="Rooms/TorchRoom/Decoration" instance=ExtResource("6_2cjdh")]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.7447425, -0.66735166, 0, 0.66735166, 0.7447425, -0.2000655, -22.133047, -19.010887)
+
+[node name="MushroomMulti8" parent="Rooms/TorchRoom/Decoration" instance=ExtResource("6_2cjdh")]
+transform = Transform3D(-0.7890839, 0, 0.6142851, 0.4099443, 0.74474245, 0.52659655, -0.45748433, 0.66735166, -0.58766437, -2.9787846, -22.842703, -15.599803)
+
+[node name="MushroomMulti5" parent="Rooms/TorchRoom/Decoration" instance=ExtResource("6_2cjdh")]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0.79467845, -22.05601, -8.155769)
+
+[node name="MushroomMulti7" parent="Rooms/TorchRoom/Decoration" instance=ExtResource("6_2cjdh")]
+transform = Transform3D(-0.2737944, -0.22852191, 0.9342454, 0.55229485, 0.7578876, 0.34724194, -0.78740525, 0.6110518, -0.08129389, -1.6479373, -22.05601, -7.767114)
+
+[node name="MushroomMulti4" parent="Rooms/TorchRoom/Decoration" instance=ExtResource("6_2cjdh")]
+transform = Transform3D(0.9908328, 0.13053006, 0.034814328, -7.553048e-09, 0.25770622, -0.96622324, -0.13509303, 0.9573658, 0.2553438, 0.5394397, -18.406734, -7.920123)
+
+[node name="LanturnHanging" parent="Rooms/TorchRoom/Decoration" instance=ExtResource("10_5sy55")]
+transform = Transform3D(-0.8660255, 0, 0.50000006, 0, 1, 0, -0.50000006, 0, -0.8660255, -22.783318, -29.613914, -11.703926)
+IsStatic = true
+
+[node name="LanturnHanging2" parent="Rooms/TorchRoom/Decoration" instance=ExtResource("10_5sy55")]
+transform = Transform3D(0.7071069, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.7071069, -22.676992, -29.613914, -16.381054)
+IsStatic = true
+
+[node name="Pedestal" parent="Rooms/TorchRoom/Decoration" instance=ExtResource("11_shq7x")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -21, -30.1, -14)
