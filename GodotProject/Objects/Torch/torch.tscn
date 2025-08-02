@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://btu3fuy2o08os"]
+
+[ext_resource type="PackedScene" uid="uid://cyeeqb6g3gh2r" path="res://Objects/Torch/Torch.glb" id="1_1nkja"]
+
+[node name="Torch" type="Node3D"]
+
+[node name="Torch" parent="." instance=ExtResource("1_1nkja")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="Circle" parent="Torch" index="0"]
+gi_mode = 2
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44374794, 0)
+light_color = Color(0.6509804, 0.53333336, 0.2901961, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 8.0
+
+[editable path="Torch"]

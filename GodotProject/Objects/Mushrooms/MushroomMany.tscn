@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://capcxx4lkn6e0"]
+
+[ext_resource type="PackedScene" uid="uid://bhsdgqlv5wrqb" path="res://Objects/Mushrooms/MushroomMany.glb" id="1_lcy6v"]
+
+[node name="MushroomMany" type="Node3D"]
+
+[node name="MushroomMany2" parent="." instance=ExtResource("1_lcy6v")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="MushroomMany" parent="MushroomMany2" index="0"]
+gi_mode = 0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13245966, 0)
+light_color = Color(0.30588236, 0.45490196, 0.6, 1)
+light_energy = 2.0
+light_bake_mode = 1
+
+[editable path="MushroomMany2"]

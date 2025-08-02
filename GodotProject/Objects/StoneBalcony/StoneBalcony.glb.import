@@ -15,9 +15,11 @@ dest_files=["res://.godot/imported/StoneBalcony.glb-3694c1a5dcab082c3dcb0b967b65
 
 nodes/root_type=""
 nodes/root_name=""
+nodes/root_script=null
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
 meshes/generate_lods=true
@@ -32,11 +34,26 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
 _subresources={
 "materials": {
 "StoneBrickwork": {
 "use_external/enabled": true,
+"use_external/fallback_path": "res://GenericMaterials/PavingStones006/PavingStones006.tres",
 "use_external/path": "uid://svt5ikwtvxsw"
+}
+},
+"meshes": {
+"StoneBalcony_Cube_001": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
 }
 },
 "nodes": {

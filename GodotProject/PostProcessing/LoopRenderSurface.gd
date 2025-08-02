@@ -1,5 +1,6 @@
 @tool
 extends MeshInstance3D
+class_name LoopRenderSurface
 
 @export var SourceViewport : Viewport
 

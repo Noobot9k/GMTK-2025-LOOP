@@ -23,6 +23,7 @@ ScaledTime="*res://Libraries/ScaledTime.gd"
 [display]
 
 window/size/mode=2
+window/vsync/vsync_mode=0
 
 [editor_plugins]
 

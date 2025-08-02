@@ -1,0 +1,101 @@
+[gd_resource type="VisualShader" load_steps=9 format=3 uid="uid://yp8rvnochft4"]
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_dbim1"]
+parameter_name = "LOOP_TEXTURE"
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_36acd"]
+source = 5
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_f5qi2"]
+input_name = "screen_uv"
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_i6kki"]
+parameter_name = "TestTint"
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_14xta"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
+op_type = 2
+operator = 2
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_i6kki"]
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_14xta"]
+constant = Color(0, 0, 0, 1)
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_ith8h"]
+constant = 1.0
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_disabled, unshaded, shadows_disabled, ambient_light_disabled, fog_disabled, specular_occlusion_disabled;
+
+uniform vec4 TestTint : source_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
+uniform sampler2D LOOP_TEXTURE;
+
+
+
+void fragment() {
+// ColorParameter:5
+	vec4 n_out5p0 = TestTint;
+
+
+// Input:4
+	vec2 n_out4p0 = SCREEN_UV;
+
+
+	vec4 n_out3p0;
+// Texture2D:3
+	n_out3p0 = texture(LOOP_TEXTURE, n_out4p0);
+
+
+// VectorOp:6
+	vec4 n_out6p0 = n_out5p0 * n_out3p0;
+
+
+// Output:0
+	ALBEDO = vec3(n_out6p0.xyz);
+
+
+}
+
+void light() {
+// ColorConstant:2
+	vec4 n_out2p0 = vec4(1.000000, 1.000000, 1.000000, 1.000000);
+
+
+// ColorConstant:3
+	vec4 n_out3p0 = vec4(0.000000, 0.000000, 0.000000, 1.000000);
+
+
+// Output:0
+	DIFFUSE_LIGHT = vec3(n_out2p0.xyz);
+	SPECULAR_LIGHT = vec3(n_out3p0.xyz);
+
+
+}
+"
+modes/specular = 2
+flags/unshaded = true
+flags/shadows_disabled = true
+flags/ambient_light_disabled = true
+flags/fog_disabled = true
+flags/specular_occlusion_disabled = true
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture2DParameter_dbim1")
+nodes/fragment/2/position = Vector2(-674.6102, 285.47644)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_36acd")
+nodes/fragment/3/position = Vector2(-234.61023, 345.47644)
+nodes/fragment/4/node = SubResource("VisualShaderNodeInput_f5qi2")
+nodes/fragment/4/position = Vector2(-660, 180)
+nodes/fragment/5/node = SubResource("VisualShaderNodeColorParameter_i6kki")
+nodes/fragment/5/position = Vector2(-600, -60)
+nodes/fragment/6/node = SubResource("VisualShaderNodeVectorOp_14xta")
+nodes/fragment/6/position = Vector2(40, 140)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 4, 0, 3, 0, 5, 0, 6, 0, 3, 0, 6, 1, 6, 0, 0, 0)
+nodes/light/2/node = SubResource("VisualShaderNodeColorConstant_i6kki")
+nodes/light/2/position = Vector2(20, 160)
+nodes/light/3/node = SubResource("VisualShaderNodeColorConstant_14xta")
+nodes/light/3/position = Vector2(20, 260)
+nodes/light/4/node = SubResource("VisualShaderNodeFloatConstant_ith8h")
+nodes/light/4/position = Vector2(20, 360)
+nodes/light/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 0, 1)
