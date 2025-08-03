@@ -552,6 +552,7 @@ offset_bottom = 0.1599884
 text = "+"
 
 [node name="PlayerCharacter" type="CharacterBody3D" parent="." node_paths=PackedStringArray("camera_rig", "model") groups=["Player"]]
+floor_max_angle = 0.9599311
 script = ExtResource("1_4ntmi")
 _control_enabled = true
 camera_rig = NodePath("../FPSCamera")
@@ -602,8 +603,7 @@ ATP_MovementBlendScale = "parameters/Movement/WalkSpeed/scale"
 metadata/_custom_type_script = "uid://byllibf7r26ld"
 
 [node name="Torch" parent="FPSCamera/Pivot/ViewModel" instance=ExtResource("9_00tjw")]
-transform = Transform3D(0.99999976, 0, 0, 0, 0.9997823, -0.0208522, 0, 0.020852199, 0.9997824, 0.5036776, -0.13951361, -0.59074724)
-ExtinguishVelocity = 60.0
+transform = Transform3D(0.99999976, 0, 0, 0, 0.9996847, -0.025101796, 0, 0.025101794, 0.99968475, 0.5036776, -0.13951361, -0.59074724)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FPSCamera/Pivot/ViewModel"]
 libraries = {
