@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ygsj7b3h7bh4"
-path.s3tc="res://.godot/imported/StoneArchway_PavingStones006_2K-JPG_NormalGL.jpg-be4cea4dce8ed3a70528397be8b5df87.s3tc.ctex"
+uid="uid://67wm3onaeiho"
+path.s3tc="res://.godot/imported/Wood040_2K-JPG_AmbientOcclusion.jpg-42e4b9223d1911051466acebc2da3adb.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "4826b243cf9549cf6838d5727f23e47a"
-}
 
 [deps]
 
-source_file="res://Objects/StoneArchway/StoneArchway_PavingStones006_2K-JPG_NormalGL.jpg"
-dest_files=["res://.godot/imported/StoneArchway_PavingStones006_2K-JPG_NormalGL.jpg-be4cea4dce8ed3a70528397be8b5df87.s3tc.ctex"]
+source_file="res://GenericMaterials/Wood040_2K-JPG/Wood040_2K-JPG_AmbientOcclusion.jpg"
+dest_files=["res://.godot/imported/Wood040_2K-JPG_AmbientOcclusion.jpg-42e4b9223d1911051466acebc2da3adb.s3tc.ctex"]
 
 [params]
 
@@ -25,12 +22,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://Objects/StoneArchway/StoneArchway_PavingStones006_2K-JPG_NormalGL.jpg"
+roughness/mode=0
+roughness/src_normal=""
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

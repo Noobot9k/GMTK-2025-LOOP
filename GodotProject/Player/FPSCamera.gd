@@ -28,10 +28,13 @@ func _ready():
 
 func _input(event):
 	if not event is InputEventMouseMotion: return
-	Axis.rotate(Vector3.UP, -deg_to_rad(event.relative.x) * Sensitivity_Horizontal)
+	Axis.rotate(
+		Vector3.UP,
+		-deg_to_rad(event.relative.x) * Sensitivity_Horizontal * Engine.time_scale
+	)
 	Pivot.rotate_object_local(
 		Vector3.LEFT,
-		deg_to_rad(event.relative.y) * Sensitivity_Vertical
+		deg_to_rad(event.relative.y) * Sensitivity_Vertical * Engine.time_scale
 	)
 
 func _process(_delta):

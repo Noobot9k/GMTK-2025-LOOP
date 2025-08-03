@@ -1,21 +1,35 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1gnb5nefuy8"]
+[gd_scene load_steps=12 format=3 uid="uid://b1gnb5nefuy8"]
 
 [ext_resource type="PackedScene" uid="uid://dy4k5s00r47lu" path="res://Objects/Lanturn/LanturnHanging.glb" id="1_fc02p"]
 [ext_resource type="Script" uid="uid://cnf7hwbnxwur5" path="res://Nodes/Ignitable.gd" id="1_vyvop"]
 [ext_resource type="Texture2D" uid="uid://dydsr3hr7b1gf" path="res://Particles/FireBall02-flipbooks/FireBall02_8x8.tga" id="2_vyvop"]
+[ext_resource type="Script" uid="uid://66f65hvj8hwt" path="res://Nodes/AnimatedOmniLight3D.gd" id="3_5mhqf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vyvop"]
+size = Vector3(0.20678711, 0.3380127, 0.20996094)
+
+[sub_resource type="Curve" id="Curve_5bxgc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.26315784, 0.7982758), 0.0, 0.0, 0, 0, Vector2(0.42914975, 0.94396544), 0.0, 0.0, 0, 0, Vector2(0.66396755, 0.75344825), 0.0, 0.0, 0, 0, Vector2(0.7530364, 0.86551714), 0.0, 0.0, 0, 0, Vector2(0.8623481, 0.7982758), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 7
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5mhqf"]
 transparency = 1
 shading_mode = 0
-albedo_color = Color(2.6126626, 2.6126626, 2.6126626, 1)
+vertex_color_use_as_albedo = true
+albedo_color = Color(5.1329317, 5.1329317, 5.1329317, 1)
 albedo_texture = ExtResource("2_vyvop")
 billboard_mode = 3
 billboard_keep_scale = true
 particles_anim_h_frames = 8
 particles_anim_v_frames = 8
 particles_anim_loop = true
+
+[sub_resource type="Curve" id="Curve_5mhqf"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.52307695, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_5bxgc"]
+curve = SubResource("Curve_5mhqf")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5bxgc"]
 direction = Vector3(0, 1, 0)
@@ -25,6 +39,7 @@ initial_velocity_max = 0.099999994
 gravity = Vector3(0, 0, 0)
 scale_min = 0.25
 scale_max = 0.25
+alpha_curve = SubResource("CurveTexture_5bxgc")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 turbulence_noise_strength = 11.17
@@ -33,10 +48,11 @@ turbulence_noise_strength = 11.17
 
 [node name="LanturnHanging" type="Area3D" node_paths=PackedStringArray("VisibilityToggles")]
 script = ExtResource("1_vyvop")
+ExtinguishVelocity = 30.0
 VisibilityToggles = [NodePath("OmniLight3D")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5681025, 0)
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6144282, 0)
 shape = SubResource("BoxShape3D_vyvop")
 
 [node name="Model" parent="." instance=ExtResource("1_fc02p")]
@@ -48,12 +64,20 @@ cast_shadow = 0
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5440015, 0)
 light_color = Color(0.6509804, 0.53333336, 0.2901961, 1)
-light_energy = 3.0
-omni_range = 8.0
+light_energy = 4.7173367
+distance_fade_begin = 20.0
+distance_fade_length = 5.0
+script = ExtResource("3_5mhqf")
+Playing = true
+AutoPlay = true
+CurrentPlayTime = 0.42348076190416456
+EnergyMultiplier = 5.0
+EnergyOverTime = SubResource("Curve_5bxgc")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="OmniLight3D"]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, -0.04492879, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04492879, 0)
 material_override = SubResource("StandardMaterial3D_5mhqf")
+amount = 3
 local_coords = true
 transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_5bxgc")

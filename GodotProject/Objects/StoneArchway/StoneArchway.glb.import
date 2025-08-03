@@ -38,6 +38,13 @@ materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
 _subresources={
+"materials": {
+"StoneBrickwork": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://GenericMaterials/PavingStones006/PavingStones006_UV.tres",
+"use_external/path": "uid://bdpgnwyipka5s"
+}
+},
 "meshes": {
 "StoneArchway_Cube_001": {
 "generate/lightmap_uv": 1,

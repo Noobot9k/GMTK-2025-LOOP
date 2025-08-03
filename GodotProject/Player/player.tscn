@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://cwe8xvhdal7gy"]
+[gd_scene load_steps=61 format=3 uid="uid://cwe8xvhdal7gy"]
 
 [ext_resource type="Script" uid="uid://duhcfdhg1cja6" path="res://Player/PlayerCharacter.gd" id="1_4ntmi"]
 [ext_resource type="Script" uid="uid://c3hhu4vxpu2l" path="res://Nodes/EquippableAbilityManager.gd" id="1_5htga"]
@@ -9,12 +9,13 @@
 [ext_resource type="Script" uid="uid://uc5gyymhxa6c" path="res://Nodes/EquippableAbility.gd" id="2_p5o4e"]
 [ext_resource type="Script" uid="uid://de4qshtrfbpyy" path="res://PostProcessing/LoopRenderSurface.gd" id="2_vtle1"]
 [ext_resource type="Shader" uid="uid://ddextfjtoqijs" path="res://PostProcessing/PPCanvas_Posterization.tres" id="3_vtle1"]
+[ext_resource type="Script" uid="uid://634roev733da" path="res://Nodes/SubViewportAutoResolution.gd" id="4_p5o4e"]
 [ext_resource type="Script" uid="uid://b0lbskf8aydt7" path="res://Nodes/FPSCounter.gd" id="5_od3ui"]
-[ext_resource type="PackedScene" uid="uid://btu3fuy2o08os" path="res://Objects/Torch/torch.tscn" id="9_00tjw"]
+[ext_resource type="PackedScene" uid="uid://btu3fuy2o08os" path="res://Objects/Torch/HeldTorch.tscn" id="9_00tjw"]
 [ext_resource type="Script" uid="uid://byllibf7r26ld" path="res://Nodes/ViewModel.gd" id="12_gu6f8"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_5htga"]
-viewport_path = NodePath("Rendering/SubViewportContainer6/SubViewport6")
+viewport_path = NodePath("Rendering/SubViewport6")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_apopc"]
 render_priority = 0
@@ -26,7 +27,7 @@ shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_5htga")
 size = Vector2(32, 32)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_p5o4e"]
-viewport_path = NodePath("Rendering/SubViewportContainer5/SubViewport5")
+viewport_path = NodePath("Rendering/SubViewport5")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p5o4e"]
 render_priority = 0
@@ -35,7 +36,7 @@ shader_parameter/TestTint = Color(1, 1, 1, 1)
 shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_p5o4e")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_gu6f8"]
-viewport_path = NodePath("Rendering/SubViewportContainer4/SubViewport4")
+viewport_path = NodePath("Rendering/SubViewport4")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dkpta"]
 render_priority = 0
@@ -44,7 +45,7 @@ shader_parameter/TestTint = Color(1, 1, 1, 1)
 shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_gu6f8")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_dkpta"]
-viewport_path = NodePath("Rendering/SubViewportContainer3/SubViewport3")
+viewport_path = NodePath("Rendering/SubViewport3")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_od3ui"]
 render_priority = 0
@@ -53,7 +54,7 @@ shader_parameter/TestTint = Color(1, 1, 1, 1)
 shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_dkpta")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_lfmf2"]
-viewport_path = NodePath("Rendering/SubViewportContainer2/SubViewport2")
+viewport_path = NodePath("Rendering/SubViewport2")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vtle1"]
 render_priority = 0
@@ -82,54 +83,6 @@ height = 1.8
 radius = 0.4
 height = 1.8
 
-[sub_resource type="Animation" id="Animation_5htga"]
-resource_name = "Idle"
-length = 3.0
-loop_mode = 1
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Torch")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0.5036776, -0.13951361, -0.59074724, 1.7, 1, 0.5036776, -0.13258797, -0.5905873, 3, 1, 0.5036776, -0.13951361, -0.59074724)
-tracks/1/type = "rotation_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Torch")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.9, 1, 0.011588727, 0, 0, 0.9999328, 3, 1, 0, 0, 0, 1)
-
-[sub_resource type="Animation" id="Animation_p5o4e"]
-length = 0.001
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Torch")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0.5036776, -0.13951361, -0.59074724)
-
-[sub_resource type="Animation" id="Animation_gu6f8"]
-resource_name = "Walk"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Torch")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0.4812113, -0.13951361, -0.616998, 0.5, 1, 0.5019636, -0.10771716, -0.59654015, 1, 1, 0.522716, -0.13951361, -0.5760823, 1.5000001, 1, 0.5019636, -0.10771716, -0.59654015)
-tracks/1/type = "rotation_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Torch")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0.3, 1, 0, 0, 0, 1, 1.3000001, 1, 0.0061860825, -0.00011505264, -0.018595053, 0.99980795)
-
 [sub_resource type="Animation" id="Animation_dkpta"]
 resource_name = "Falling"
 length = 0.2
@@ -148,6 +101,25 @@ tracks/1/path = NodePath("Torch")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, -0.006841244, 7.3375486e-05, -0.010724591, 0.99991906, 0.03333333, 1, 0.022267278, -0.00023882679, -0.010722184, 0.99969447, 0.06666668, 1, 0.02487352, -0.00032358343, 0.00040459784, 0.9996904, 0.099999994, 1, 0.0067730597, -0.0006353922, -0.002686083, 0.9999732, 0.13333334, 1, -0.0010604493, -0.00019920763, -0.013783112, 0.99990433, 0.16666667, 1, 0.026639469, -0.00067501416, 0.0038819662, 0.99963725)
+
+[sub_resource type="Animation" id="Animation_5htga"]
+resource_name = "Idle"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torch")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.5036776, -0.13951361, -0.59074724, 1.7, 1, 0.5036776, -0.13258797, -0.5905873, 3, 1, 0.5036776, -0.13951361, -0.59074724)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Torch")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.9, 1, 0.011588727, 0, 0, 0.9999328, 3, 1, 0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_lfmf2"]
 resource_name = "Jump"
@@ -182,6 +154,35 @@ tracks/1/path = NodePath("Torch")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.9999999, 0.3, 1, -0.3911006, 0, 0, 0.92034787, 1, 1, 0, 0, 0, 0.9999999)
+
+[sub_resource type="Animation" id="Animation_p5o4e"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torch")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.5036776, -0.13951361, -0.59074724)
+
+[sub_resource type="Animation" id="Animation_gu6f8"]
+resource_name = "Walk"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torch")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.4812113, -0.13951361, -0.616998, 0.5, 1, 0.5019636, -0.10771716, -0.59654015, 1, 1, 0.522716, -0.13951361, -0.5760823, 1.5000001, 1, 0.5019636, -0.10771716, -0.59654015)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Torch")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0.3, 1, 0, 0, 0, 1, 1.3000001, 1, 0.0061860825, -0.00011505264, -0.018595053, 0.99980795)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gu6f8"]
 _data = {
@@ -304,26 +305,28 @@ node_connections = [&"output", 0, &"_", &"_", 0, &"StateMachine", &"_", 1, &"Mov
 
 [node name="Player" type="Node3D"]
 
-[node name="EquippableAbilityManager" type="Node" parent="."]
-script = ExtResource("1_5htga")
-metadata/_custom_type_script = "uid://c3hhu4vxpu2l"
-
-[node name="EquippableAbility" type="Node3D" parent="EquippableAbilityManager"]
-script = ExtResource("2_p5o4e")
-Active = true
-metadata/_custom_type_script = "uid://uc5gyymhxa6c"
-
 [node name="LoopControl" type="Node" parent="." node_paths=PackedStringArray("Renderers", "CameraTransform", "RemotePositions", "ReverseRemotePosition", "RenderSurface", "ReverseRenderSurface", "PlayerChar")]
 script = ExtResource("1_gwnis")
 LoopSize = 32.0
 LoopRenderCount = 4
-Renderers = [NodePath("../Rendering/SubViewportContainer2"), NodePath("../Rendering/SubViewportContainer3"), NodePath("../Rendering/SubViewportContainer4"), NodePath("../Rendering/SubViewportContainer5")]
+Renderers = [NodePath("../Rendering/SubViewport2"), NodePath("../Rendering/SubViewport3"), NodePath("../Rendering/SubViewport4"), NodePath("../Rendering/SubViewport5")]
 CameraTransform = NodePath("../FPSCamera/Pivot")
 RemotePositions = [NodePath("../FPSCamera/RemotePosition2"), NodePath("../FPSCamera/RemotePosition2/RemotePosition3"), NodePath("../FPSCamera/RemotePosition2/RemotePosition3/RemotePosition4"), NodePath("../FPSCamera/RemotePosition2/RemotePosition3/RemotePosition4/RemotePosition5")]
 ReverseRemotePosition = NodePath("../FPSCamera/RemotePosition6")
 RenderSurface = NodePath("../Rendering/SubViewportContainer1/SubViewport1/LoopRenderSurface")
 ReverseRenderSurface = NodePath("../Rendering/SubViewportContainer1/SubViewport1/LoopRenderSurfRev")
 PlayerChar = NodePath("../PlayerCharacter")
+
+[node name="EquippableAbilityManager" type="Node" parent="." node_paths=PackedStringArray("RootAbility", "ViewModelNode")]
+script = ExtResource("1_5htga")
+RootAbility = NodePath("EquippableAbility")
+ViewModelNode = NodePath("../FPSCamera/Pivot/ViewModel")
+metadata/_custom_type_script = "uid://c3hhu4vxpu2l"
+
+[node name="EquippableAbility" type="Node3D" parent="EquippableAbilityManager"]
+script = ExtResource("2_p5o4e")
+Active = true
+metadata/_custom_type_script = "uid://uc5gyymhxa6c"
 
 [node name="Rendering" type="Control" parent="."]
 texture_filter = 1
@@ -334,47 +337,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SubViewportContainer6" type="SubViewportContainer" parent="Rendering"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch = true
-metadata/_edit_use_anchors_ = true
-
-[node name="SubViewport6" type="SubViewport" parent="Rendering/SubViewportContainer6"]
+[node name="SubViewport6" type="SubViewport" parent="Rendering"]
 handle_input_locally = false
 positional_shadow_atlas_size = 512
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
+script = ExtResource("4_p5o4e")
 
-[node name="Camera6" type="Camera3D" parent="Rendering/SubViewportContainer6/SubViewport6"]
+[node name="Camera6" type="Camera3D" parent="Rendering/SubViewport6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -23.3, 0)
 cull_mask = 556543
 
-[node name="SubViewportContainer5" type="SubViewportContainer" parent="Rendering"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch = true
-metadata/_edit_use_anchors_ = true
-
-[node name="SubViewport5" type="SubViewport" parent="Rendering/SubViewportContainer5"]
+[node name="SubViewport5" type="SubViewport" parent="Rendering"]
 handle_input_locally = false
 positional_shadow_atlas_size = 512
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
+script = ExtResource("4_p5o4e")
 
-[node name="Camera5" type="Camera3D" parent="Rendering/SubViewportContainer5/SubViewport5"]
+[node name="Camera5" type="Camera3D" parent="Rendering/SubViewport5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 96.7, 0)
 cull_mask = 294399
 
-[node name="LoopRenderSurface" type="MeshInstance3D" parent="Rendering/SubViewportContainer5/SubViewport5" node_paths=PackedStringArray("SourceViewport")]
+[node name="LoopRenderSurface" type="MeshInstance3D" parent="Rendering/SubViewport5" node_paths=PackedStringArray("SourceViewport")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -32, 0)
 visible = false
 layers = 262144
@@ -382,98 +367,71 @@ material_override = SubResource("ShaderMaterial_apopc")
 gi_mode = 0
 mesh = SubResource("PlaneMesh_od3ui")
 script = ExtResource("2_vtle1")
-SourceViewport = NodePath("../../../SubViewportContainer6/SubViewport6")
+SourceViewport = NodePath("../../SubViewport6")
 
-[node name="SubViewportContainer4" type="SubViewportContainer" parent="Rendering"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch = true
-metadata/_edit_use_anchors_ = true
-
-[node name="SubViewport4" type="SubViewport" parent="Rendering/SubViewportContainer4"]
+[node name="SubViewport4" type="SubViewport" parent="Rendering"]
 transparent_bg = true
 handle_input_locally = false
 positional_shadow_atlas_size = 1024
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
+script = ExtResource("4_p5o4e")
 
-[node name="Camera4" type="Camera3D" parent="Rendering/SubViewportContainer4/SubViewport4"]
+[node name="Camera4" type="Camera3D" parent="Rendering/SubViewport4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 72.7, 0)
 cull_mask = 163327
 
-[node name="LoopRenderSurface" type="MeshInstance3D" parent="Rendering/SubViewportContainer4/SubViewport4" node_paths=PackedStringArray("SourceViewport")]
+[node name="LoopRenderSurface" type="MeshInstance3D" parent="Rendering/SubViewport4" node_paths=PackedStringArray("SourceViewport")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -32, 0)
 layers = 131072
 material_override = SubResource("ShaderMaterial_p5o4e")
 gi_mode = 0
 mesh = SubResource("PlaneMesh_od3ui")
 script = ExtResource("2_vtle1")
-SourceViewport = NodePath("../../../SubViewportContainer5/SubViewport5")
+SourceViewport = NodePath("../../SubViewport5")
 
-[node name="SubViewportContainer3" type="SubViewportContainer" parent="Rendering"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch = true
-metadata/_edit_use_anchors_ = true
-
-[node name="SubViewport3" type="SubViewport" parent="Rendering/SubViewportContainer3"]
+[node name="SubViewport3" type="SubViewport" parent="Rendering"]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
+script = ExtResource("4_p5o4e")
 
-[node name="Camera3" type="Camera3D" parent="Rendering/SubViewportContainer3/SubViewport3"]
+[node name="Camera3" type="Camera3D" parent="Rendering/SubViewport3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48.7, 0)
 cull_mask = 97791
 
-[node name="LoopRenderSurface" type="MeshInstance3D" parent="Rendering/SubViewportContainer3/SubViewport3" node_paths=PackedStringArray("SourceViewport")]
+[node name="LoopRenderSurface" type="MeshInstance3D" parent="Rendering/SubViewport3" node_paths=PackedStringArray("SourceViewport")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -32, 0)
 layers = 65536
 material_override = SubResource("ShaderMaterial_dkpta")
 gi_mode = 0
 mesh = SubResource("PlaneMesh_od3ui")
 script = ExtResource("2_vtle1")
-SourceViewport = NodePath("../../../SubViewportContainer4/SubViewport4")
+SourceViewport = NodePath("../../SubViewport4")
 
-[node name="SubViewportContainer2" type="SubViewportContainer" parent="Rendering"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch = true
-metadata/_edit_use_anchors_ = true
-
-[node name="SubViewport2" type="SubViewport" parent="Rendering/SubViewportContainer2"]
+[node name="SubViewport2" type="SubViewport" parent="Rendering"]
 transparent_bg = true
 handle_input_locally = false
-use_occlusion_culling = true
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
+script = ExtResource("4_p5o4e")
 
-[node name="Camera2" type="Camera3D" parent="Rendering/SubViewportContainer2/SubViewport2"]
+[node name="Camera2" type="Camera3D" parent="Rendering/SubViewport2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.7, 0)
 cull_mask = 65023
 
-[node name="LoopRenderSurface" type="MeshInstance3D" parent="Rendering/SubViewportContainer2/SubViewport2" node_paths=PackedStringArray("SourceViewport")]
+[node name="LoopRenderSurface" type="MeshInstance3D" parent="Rendering/SubViewport2" node_paths=PackedStringArray("SourceViewport")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -32, 0)
 layers = 32768
 material_override = SubResource("ShaderMaterial_od3ui")
 gi_mode = 0
 mesh = SubResource("PlaneMesh_od3ui")
 script = ExtResource("2_vtle1")
-SourceViewport = NodePath("../../../SubViewportContainer3/SubViewport3")
+SourceViewport = NodePath("../../SubViewport3")
 
 [node name="SubViewportContainer1" type="SubViewportContainer" parent="Rendering"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -488,9 +446,8 @@ metadata/_edit_use_anchors_ = true
 transparent_bg = true
 handle_input_locally = false
 msaa_3d = 2
-use_occlusion_culling = true
 size = Vector2i(1152, 648)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="LoopRenderSurface" type="MeshInstance3D" parent="Rendering/SubViewportContainer1/SubViewport1" node_paths=PackedStringArray("SourceViewport")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -32, 0)
@@ -499,19 +456,19 @@ material_override = SubResource("ShaderMaterial_vtle1")
 gi_mode = 0
 mesh = SubResource("PlaneMesh_od3ui")
 script = ExtResource("2_vtle1")
-SourceViewport = NodePath("../../../SubViewportContainer2/SubViewport2")
+SourceViewport = NodePath("../../../SubViewport2")
 
 [node name="RemoteTransform2" type="RemoteTransform3D" parent="Rendering/SubViewportContainer1/SubViewport1/LoopRenderSurface"]
-remote_path = NodePath("../../../../SubViewportContainer2/SubViewport2/LoopRenderSurface")
+remote_path = NodePath("../../../../SubViewport2/LoopRenderSurface")
 
 [node name="RemoteTransform3" type="RemoteTransform3D" parent="Rendering/SubViewportContainer1/SubViewport1/LoopRenderSurface"]
-remote_path = NodePath("../../../../SubViewportContainer3/SubViewport3/LoopRenderSurface")
+remote_path = NodePath("../../../../SubViewport3/LoopRenderSurface")
 
 [node name="RemoteTransform4" type="RemoteTransform3D" parent="Rendering/SubViewportContainer1/SubViewport1/LoopRenderSurface"]
-remote_path = NodePath("../../../../SubViewportContainer4/SubViewport4/LoopRenderSurface")
+remote_path = NodePath("../../../../SubViewport4/LoopRenderSurface")
 
 [node name="RemoteTransform5" type="RemoteTransform3D" parent="Rendering/SubViewportContainer1/SubViewport1/LoopRenderSurface"]
-remote_path = NodePath("../../../../SubViewportContainer5/SubViewport5/LoopRenderSurface")
+remote_path = NodePath("../../../../SubViewport5/LoopRenderSurface")
 
 [node name="LoopRenderSurfRev" type="MeshInstance3D" parent="Rendering/SubViewportContainer1/SubViewport1" node_paths=PackedStringArray("SourceViewport")]
 transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 0, 0)
@@ -520,33 +477,35 @@ material_override = SubResource("ShaderMaterial_x3vf3")
 gi_mode = 0
 mesh = SubResource("PlaneMesh_od3ui")
 script = ExtResource("2_vtle1")
-SourceViewport = NodePath("../../../SubViewportContainer6/SubViewport6")
+SourceViewport = NodePath("../../../SubViewport6")
 
 [node name="Camera1" type="Camera3D" parent="Rendering/SubViewportContainer1/SubViewport1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 cull_mask = 32767
+current = true
 
 [node name="RemoteTransform2" type="RemoteTransform3D" parent="Rendering/SubViewportContainer1/SubViewport1/Camera1"]
-remote_path = NodePath("../../../../SubViewportContainer2/SubViewport2/Camera2")
+remote_path = NodePath("../../../../SubViewport2/Camera2")
 update_position = false
 
 [node name="RemoteTransform3" type="RemoteTransform3D" parent="Rendering/SubViewportContainer1/SubViewport1/Camera1"]
-remote_path = NodePath("../../../../SubViewportContainer3/SubViewport3/Camera3")
+remote_path = NodePath("../../../../SubViewport3/Camera3")
 update_position = false
 
 [node name="RemoteTransform4" type="RemoteTransform3D" parent="Rendering/SubViewportContainer1/SubViewport1/Camera1"]
-remote_path = NodePath("../../../../SubViewportContainer4/SubViewport4/Camera4")
+remote_path = NodePath("../../../../SubViewport4/Camera4")
 update_position = false
 
 [node name="RemoteTransform5" type="RemoteTransform3D" parent="Rendering/SubViewportContainer1/SubViewport1/Camera1"]
-remote_path = NodePath("../../../../SubViewportContainer5/SubViewport5/Camera5")
+remote_path = NodePath("../../../../SubViewport5/Camera5")
 update_position = false
 
 [node name="RemoteTransform6" type="RemoteTransform3D" parent="Rendering/SubViewportContainer1/SubViewport1/Camera1"]
-remote_path = NodePath("../../../../SubViewportContainer6/SubViewport6/Camera6")
+remote_path = NodePath("../../../../SubViewport6/Camera6")
 update_position = false
 
 [node name="Posterization" type="Panel" parent="Rendering"]
+visible = false
 material = SubResource("ShaderMaterial_00tjw")
 layout_mode = 1
 anchors_preset = 15
@@ -592,7 +551,7 @@ offset_right = 0.2639923
 offset_bottom = 0.1599884
 text = "+"
 
-[node name="PlayerCharacter" type="CharacterBody3D" parent="." node_paths=PackedStringArray("camera_rig", "model")]
+[node name="PlayerCharacter" type="CharacterBody3D" parent="." node_paths=PackedStringArray("camera_rig", "model") groups=["Player"]]
 script = ExtResource("1_4ntmi")
 _control_enabled = true
 camera_rig = NodePath("../FPSCamera")
@@ -643,7 +602,8 @@ ATP_MovementBlendScale = "parameters/Movement/WalkSpeed/scale"
 metadata/_custom_type_script = "uid://byllibf7r26ld"
 
 [node name="Torch" parent="FPSCamera/Pivot/ViewModel" instance=ExtResource("9_00tjw")]
-transform = Transform3D(0.99999976, 0, 0, 0, 0.99968815, -0.02496336, 0, 0.024963358, 0.9996882, 0.5036776, -0.13951361, -0.59074724)
+transform = Transform3D(0.99999976, 0, 0, 0, 0.9997823, -0.0208522, 0, 0.020852199, 0.9997824, 0.5036776, -0.13951361, -0.59074724)
+ExtinguishVelocity = 60.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FPSCamera/Pivot/ViewModel"]
 libraries = {
@@ -666,31 +626,31 @@ parameters/_/add_amount = 1.0
 
 [node name="RemotePosition2" type="RemoteTransform3D" parent="FPSCamera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0)
-remote_path = NodePath("../../Rendering/SubViewportContainer2/SubViewport2/Camera2")
+remote_path = NodePath("../../Rendering/SubViewport2/Camera2")
 update_rotation = false
 update_scale = false
 
 [node name="RemotePosition3" type="RemoteTransform3D" parent="FPSCamera/RemotePosition2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0)
-remote_path = NodePath("../../../Rendering/SubViewportContainer3/SubViewport3/Camera3")
+remote_path = NodePath("../../../Rendering/SubViewport3/Camera3")
 update_rotation = false
 update_scale = false
 
 [node name="RemotePosition4" type="RemoteTransform3D" parent="FPSCamera/RemotePosition2/RemotePosition3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0)
-remote_path = NodePath("../../../../Rendering/SubViewportContainer4/SubViewport4/Camera4")
+remote_path = NodePath("../../../../Rendering/SubViewport4/Camera4")
 update_rotation = false
 update_scale = false
 
 [node name="RemotePosition5" type="RemoteTransform3D" parent="FPSCamera/RemotePosition2/RemotePosition3/RemotePosition4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0)
-remote_path = NodePath("../../../../../Rendering/SubViewportContainer5/SubViewport5/Camera5")
+remote_path = NodePath("../../../../../Rendering/SubViewport5/Camera5")
 update_rotation = false
 update_scale = false
 
 [node name="RemotePosition6" type="RemoteTransform3D" parent="FPSCamera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -24, 0)
-remote_path = NodePath("../../Rendering/SubViewportContainer6/SubViewport6/Camera6")
+remote_path = NodePath("../../Rendering/SubViewport6/Camera6")
 update_rotation = false
 update_scale = false
 

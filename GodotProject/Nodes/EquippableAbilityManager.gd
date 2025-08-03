@@ -7,8 +7,8 @@ signal CurrentlyEquippedChanged
 @export var EquippableAbilities : Array[EquippableAbility]
 
 @export var ViewModelNode : ViewModel
-@export var ViewModelAnimTree : AnimationTree
-@export var AnimTreeFireHeldPath : String
+#@export var ViewModelAnimTree : AnimationTree
+#@export var AnimTreeFireHeldPath : String
 
 var CurrentlyEquipped : EquippableAbility
 
@@ -26,28 +26,29 @@ func _subscribeToEquippableAbilityEvents(ability : EquippableAbility):
 	ability.AttackChargeAlphaChanged.connect(Callable(ViewModelNode, "SetAnimChargeAlpha"))
 
 func _process(_delta):
+	pass
 	#if CurrentlyEquipped:
 		#ViewModelNode.AnimChargeAlpha = CurrentlyEquipped.AttackChargeAlpha
 	
 	#if ViewModelAnimTree:
 		#ViewModelAnimTree.set(AnimTreeFireHeldPath, Input.is_action_pressed("Fire"))
 	
-	if Input.is_action_just_pressed("equippables_clear"):
-		#UnequipCurrent()
-		Equip(RootAbility)
-	elif Input.is_action_just_pressed("equippables_1"):
-		Equip(EquippableAbilities[0])
+	#if Input.is_action_just_pressed("equippables_clear"):
+		##UnequipCurrent()
+		#Equip(RootAbility)
+	#elif Input.is_action_just_pressed("equippables_1"):
+		#Equip(EquippableAbilities[0])
 	#elif Input.is_action_just_pressed("equippables_2"):
 		#Equip(EquippableAbilities[1])
 	#elif Input.is_action_just_pressed("equippables_3"):
 		#pass #Equip(EquippableAbilities[2])
-	elif Input.is_action_just_pressed("equippables_cycle"):
-		if CurrentlyEquipped:
-			var index = EquippableAbilities.find(CurrentlyEquipped)
-			if index != null:
-				EquipAbilityAtIndex(index+1, false)
-		else:
-			Equip(EquippableAbilities[0])
+	#elif Input.is_action_just_pressed("equippables_cycle"):
+		#if CurrentlyEquipped:
+			#var index = EquippableAbilities.find(CurrentlyEquipped)
+			#if index != null:
+				#EquipAbilityAtIndex(index+1, false)
+		#else:
+			#Equip(EquippableAbilities[0])
 
 func EquipAbilityAtIndex(index : int, wrapAround : bool = false):
 	if index >= EquippableAbilities.size():

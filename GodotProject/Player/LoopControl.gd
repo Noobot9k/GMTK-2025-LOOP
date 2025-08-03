@@ -3,7 +3,7 @@ class_name LoopControl
 
 @export var LoopSize : float = 24
 @export var LoopRenderCount : int = 6
-@export var Renderers : Array[SubViewportContainer]
+@export var Renderers : Array[SubViewport]
 @export var CameraTransform : Node3D
 @export var RemotePositions : Array[Node3D]
 @export var ReverseRemotePosition : Node3D
@@ -29,16 +29,28 @@ func _process(_delta: float) -> void:
 		Vector3.FORWARD,
 		Vector3.DOWN if cameraDot <=0 else Vector3.UP
 		)
-	ReverseRenderSurface.SourceViewport.get_parent().visible = true if \
-		cameraAngle >= 90 - (75/2.0) and cameraAngle <= 90 + (75/2.0)  else false
+	ReverseRenderSurface.SourceViewport.render_target_update_mode = \
+	SubViewport.UPDATE_ALWAYS if \
+		cameraAngle >= 90 - (75/2.0) and cameraAngle <= 90 + (75/2.0)\
+		else SubViewport.UPDATE_DISABLED
 	
 	ReverseRemotePosition.position.y = -LoopSize if cameraDot <= 0 else LoopSize
 	for remotePos in RemotePositions:
 		remotePos.position.y = LoopSize if cameraDot <= 0 else -LoopSize
 	
 	for i in Renderers.size():
-		var renderer : SubViewportContainer = Renderers[i]
-		renderer.visible = i < LoopRenderCount
+		var renderer : SubViewport = Renderers[i]
+		renderer.render_target_update_mode = \
+		SubViewport.UPDATE_ALWAYS if i < LoopRenderCount \
+		else SubViewport.UPDATE_DISABLED
+
+func TweenLoopSize(newLoopSize : float, tweenLength : float = 1) -> Tween:
+	var newTween : Tween = get_tree().create_tween()
+	newTween.set_ignore_time_scale(true)
+	newTween.set_ease(Tween.EASE_IN_OUT)
+	newTween.set_trans(Tween.TRANS_CUBIC)
+	newTween.tween_property(self, "LoopSize", newLoopSize, tweenLength)
+	return newTween
 
 func IncreaseRenderers():
 	LoopRenderCount += 1
