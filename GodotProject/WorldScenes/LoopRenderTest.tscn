@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=4 uid="uid://2hlgssnsobk1"]
+[gd_scene load_steps=23 format=4 uid="uid://2hlgssnsobk1"]
 
 [ext_resource type="Script" uid="uid://gteca0vgh851" path="res://Nodes/LoopExtensionActivator.gd" id="1_ctxuk"]
 [ext_resource type="PackedScene" uid="uid://cwe8xvhdal7gy" path="res://Player/player.tscn" id="1_dd4pd"]
+[ext_resource type="AudioStream" uid="uid://caeqsf5tj3rrl" path="res://Sounds/LoopExtend.ogg" id="2_3mkgr"]
 [ext_resource type="Material" uid="uid://0i67fpbkt4cv" path="res://GenericMaterials/PavingStones016/PavingStones016.tres" id="2_eupyd"]
 [ext_resource type="PackedScene" uid="uid://cw0ojkdsxp1n7" path="res://Objects/StoneArchway/StoneArchway.glb" id="3_13wh4"]
 [ext_resource type="PackedScene" uid="uid://ci6qf88xaywlt" path="res://Objects/StoneBalcony/StoneBalcony.glb" id="3_ijjyi"]
@@ -63,7 +64,6 @@ size = Vector2(4, 4)
 [node name="LoopActivator" type="Area3D" parent="." node_paths=PackedStringArray("LoopController")]
 script = ExtResource("1_ctxuk")
 LoopController = NodePath("../Player/LoopControl")
-TargetLoopSize = 48.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LoopActivator"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -23.5, 0)
@@ -79,8 +79,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -64, 0)
 visible = false
 mesh = SubResource("PlaneMesh_osesu")
 
+[node name="LoopExtend" type="AudioStreamPlayer" parent="LoopActivator"]
+stream = ExtResource("2_3mkgr")
+volume_db = 14.857
+bus = &"Default"
+
 [node name="LightmapGI" type="LightmapGI" parent="."]
 quality = 0
+texel_scale = 0.5
 light_data = ExtResource("7_axvlr")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -89,12 +95,37 @@ environment = SubResource("Environment_eupyd")
 [node name="Player" parent="." instance=ExtResource("1_dd4pd")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -8.000002, 2, 18.5)
 
+[node name="LoopControl" parent="Player" index="0" node_paths=PackedStringArray("WorldEnviro")]
+WorldEnviro = NodePath("../../WorldEnvironment")
+
+[node name="Camera6" parent="Player/Rendering/SubViewport6" index="0"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -8.000002, -21.3, 18.5)
+
+[node name="Camera5" parent="Player/Rendering/SubViewport5" index="0"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -8.000002, 98.7, 18.5)
+
+[node name="Camera4" parent="Player/Rendering/SubViewport4" index="0"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -8.000002, 74.7, 18.5)
+
+[node name="Camera3" parent="Player/Rendering/SubViewport3" index="0"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -8.000002, 50.7, 18.5)
+
+[node name="Camera2" parent="Player/Rendering/SubViewport2" index="0"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -8.000002, 26.7, 18.5)
+
+[node name="Camera1" parent="Player/Rendering/SubViewportContainer1/SubViewport1" index="2"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -8.000002, 2.7, 18.5)
+
+[node name="Torch" parent="Player/FPSCamera/Pivot/ViewModel" index="0"]
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99968475, -0.025090119, 0, 0.025090117, 0.9996848, 0.5036776, -0.13951361, -0.59074724)
+
 [node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="."]
 material_override = ExtResource("2_eupyd")
 mesh = SubResource("ArrayMesh_osesu")
 skeleton = NodePath("../Geo")
 
 [node name="Geo" type="Node3D" parent="."]
+visible = false
 
 [node name="CSG" type="CSGCylinder3D" parent="Geo"]
 visible = false
@@ -368,6 +399,7 @@ omni_range = 22.081
 
 [node name="Torch" parent="Rooms/TorchRoom/Interactable" instance=ExtResource("3_w0qgj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.063505, -28.403635, -14)
+visible = false
 ExtinguishVelocity = 30.0
 
 [node name="LanturnHanging" parent="Rooms/TorchRoom/Interactable" instance=ExtResource("10_5sy55")]
@@ -506,6 +538,17 @@ IsStatic = true
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7, -1.5925598, 1.2488174)
 IsStatic = true
 
+[node name="Label3D" type="Label3D" parent="Rooms/FinishRoom"]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 23, 1, -1.0053618e-06)
+shaded = true
+text = "I ran out of time,
+so I guess you're just trapped down here forever.
+Thank you for playing"
+font_size = 64
+
+[connection signal="TargetLoopSizeSet" from="LoopActivator" to="LoopActivator/LoopExtend" method="play"]
 [connection signal="Ignited" from="Rooms/TorchRoom/Interactable/LanturnHanging" to="LoopActivator" method="SetTargetLoopSize" binds= [48.0]]
 [connection signal="Ignited" from="Rooms/TorchRoom/Interactable/LanturnHanging3" to="Rooms/TorchRoom/Interactable/FireBridge" method="SetEnabled" binds= [true]]
 [connection signal="Ignited" from="Rooms/ParkourRoom/Balcony6/LanturnHanging2" to="LoopActivator" method="SetTargetLoopSize" binds= [64.0]]
+
+[editable path="Player"]

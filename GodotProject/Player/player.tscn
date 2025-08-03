@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://cwe8xvhdal7gy"]
+[gd_scene load_steps=71 format=3 uid="uid://cwe8xvhdal7gy"]
 
 [ext_resource type="Script" uid="uid://duhcfdhg1cja6" path="res://Player/PlayerCharacter.gd" id="1_4ntmi"]
 [ext_resource type="Script" uid="uid://c3hhu4vxpu2l" path="res://Nodes/EquippableAbilityManager.gd" id="1_5htga"]
@@ -12,68 +12,75 @@
 [ext_resource type="Script" uid="uid://634roev733da" path="res://Nodes/SubViewportAutoResolution.gd" id="4_p5o4e"]
 [ext_resource type="Script" uid="uid://b0lbskf8aydt7" path="res://Nodes/FPSCounter.gd" id="5_od3ui"]
 [ext_resource type="PackedScene" uid="uid://btu3fuy2o08os" path="res://Objects/Torch/HeldTorch.tscn" id="9_00tjw"]
+[ext_resource type="Script" uid="uid://dbeaiprqo5qla" path="res://Player/CharSFXHandler.gd" id="11_7emwf"]
 [ext_resource type="Script" uid="uid://byllibf7r26ld" path="res://Nodes/ViewModel.gd" id="12_gu6f8"]
+[ext_resource type="AudioStream" uid="uid://b6vwyt2vbpddm" path="res://Sounds/Footsteps/Footstep-01.ogg" id="12_hshwv"]
+[ext_resource type="AudioStream" uid="uid://cpix20smstrgl" path="res://Sounds/Footsteps/Footstep-02.ogg" id="13_gpjlu"]
+[ext_resource type="AudioStream" uid="uid://c176217g11rni" path="res://Sounds/Footsteps/Footstep-03.ogg" id="14_8mwp6"]
+[ext_resource type="AudioStream" uid="uid://cu4kofgvrqwe3" path="res://Sounds/Footsteps/Footstep-04.ogg" id="15_qemgg"]
+[ext_resource type="AudioStream" uid="uid://buqhoo7twic56" path="res://Sounds/Footsteps/Footstep-05.ogg" id="16_8viyr"]
+[ext_resource type="AudioStream" uid="uid://ctc8lhdks5nl8" path="res://Sounds/Landing.ogg" id="17_sm0op"]
+[ext_resource type="AudioStream" uid="uid://dr5e6hno36fu1" path="res://Sounds/SFX_Falling.ogg" id="18_76lrf"]
+[ext_resource type="AudioStream" uid="uid://cnqrmvyk6w4oo" path="res://Sounds/FireExtinguish.ogg" id="22_gpjlu"]
+[ext_resource type="AudioStream" uid="uid://cexg4afo2kec4" path="res://Sounds/fireplace-crackling-wood-little-flame-7039.mp3" id="23_8mwp6"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_5htga"]
-viewport_path = NodePath("Rendering/SubViewport6")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_apopc"]
-render_priority = 0
-shader = ExtResource("2_fhl08")
-shader_parameter/TestTint = Color(1, 1, 1, 1)
-shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_5htga")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gpjlu"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_od3ui"]
 size = Vector2(32, 32)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_p5o4e"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_qemgg"]
 viewport_path = NodePath("Rendering/SubViewport5")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p5o4e"]
 render_priority = 0
 shader = ExtResource("2_fhl08")
 shader_parameter/TestTint = Color(1, 1, 1, 1)
-shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_p5o4e")
+shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_qemgg")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_gu6f8"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_8viyr"]
 viewport_path = NodePath("Rendering/SubViewport4")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dkpta"]
 render_priority = 0
 shader = ExtResource("2_fhl08")
 shader_parameter/TestTint = Color(1, 1, 1, 1)
-shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_gu6f8")
+shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_8viyr")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_dkpta"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_sm0op"]
 viewport_path = NodePath("Rendering/SubViewport3")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_od3ui"]
 render_priority = 0
 shader = ExtResource("2_fhl08")
 shader_parameter/TestTint = Color(1, 1, 1, 1)
-shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_dkpta")
+shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_sm0op")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_lfmf2"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_76lrf"]
 viewport_path = NodePath("Rendering/SubViewport2")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vtle1"]
 render_priority = 0
 shader = ExtResource("2_fhl08")
 shader_parameter/TestTint = Color(1, 1, 1, 1)
-shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_lfmf2")
+shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_76lrf")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8mwp6"]
+viewport_path = NodePath("Rendering/SubViewport6")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x3vf3"]
 render_priority = 0
 shader = ExtResource("2_fhl08")
 shader_parameter/TestTint = Color(1, 1, 1, 1)
-shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_5htga")
+shader_parameter/LOOP_TEXTURE = SubResource("ViewportTexture_8mwp6")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_00tjw"]
 shader = ExtResource("3_vtle1")
 shader_parameter/Steps = 8.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_vtle1"]
-font_size = 71
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_13wh4"]
 radius = 0.4
@@ -183,6 +190,23 @@ tracks/1/path = NodePath("Torch")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0.3, 1, 0, 0, 0, 1, 1.3000001, 1, 0.0061860825, -0.00011505264, -0.018595053, 0.99980795)
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../PlayerCharacter/SFXHandler")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"step"
+}, {
+"args": [],
+"method": &"step"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gu6f8"]
 _data = {
@@ -212,7 +236,7 @@ animation = &"Idle"
 animation = &"Walk"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_b1ygp"]
-graph_offset = Vector2(-361.67725, 87.505585)
+graph_offset = Vector2(-410.67725, 40.505585)
 nodes/output/position = Vector2(620, 200)
 nodes/Walking/node = SubResource("AnimationNodeAnimation_pisgm")
 nodes/Walking/position = Vector2(-300, 260)
@@ -293,7 +317,7 @@ graph_offset = Vector2(36, -164)
 [sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_5htga"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_o28un"]
-graph_offset = Vector2(-428.81335, -113.49013)
+graph_offset = Vector2(-470.0533, 10.916115)
 nodes/output/position = Vector2(520, 20)
 nodes/Movement/node = SubResource("AnimationNodeBlendTree_b1ygp")
 nodes/Movement/position = Vector2(0, 160)
@@ -307,8 +331,6 @@ node_connections = [&"output", 0, &"_", &"_", 0, &"StateMachine", &"_", 1, &"Mov
 
 [node name="LoopControl" type="Node" parent="." node_paths=PackedStringArray("Renderers", "CameraTransform", "RemotePositions", "ReverseRemotePosition", "RenderSurface", "ReverseRenderSurface", "PlayerChar")]
 script = ExtResource("1_gwnis")
-LoopSize = 32.0
-LoopRenderCount = 4
 Renderers = [NodePath("../Rendering/SubViewport2"), NodePath("../Rendering/SubViewport3"), NodePath("../Rendering/SubViewport4"), NodePath("../Rendering/SubViewport5")]
 CameraTransform = NodePath("../FPSCamera/Pivot")
 RemotePositions = [NodePath("../FPSCamera/RemotePosition2"), NodePath("../FPSCamera/RemotePosition2/RemotePosition3"), NodePath("../FPSCamera/RemotePosition2/RemotePosition3/RemotePosition4"), NodePath("../FPSCamera/RemotePosition2/RemotePosition3/RemotePosition4/RemotePosition5")]
@@ -359,15 +381,12 @@ script = ExtResource("4_p5o4e")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 96.7, 0)
 cull_mask = 294399
 
-[node name="LoopRenderSurface" type="MeshInstance3D" parent="Rendering/SubViewport5" node_paths=PackedStringArray("SourceViewport")]
+[node name="LoopRenderSurface" type="MeshInstance3D" parent="Rendering/SubViewport5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -32, 0)
-visible = false
 layers = 262144
-material_override = SubResource("ShaderMaterial_apopc")
+material_override = SubResource("StandardMaterial3D_gpjlu")
 gi_mode = 0
 mesh = SubResource("PlaneMesh_od3ui")
-script = ExtResource("2_vtle1")
-SourceViewport = NodePath("../../SubViewport6")
 
 [node name="SubViewport4" type="SubViewport" parent="Rendering"]
 transparent_bg = true
@@ -526,6 +545,7 @@ label_settings = SubResource("LabelSettings_vtle1")
 script = ExtResource("5_od3ui")
 
 [node name="ButtonDecrease" type="Button" parent="Rendering"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.013
@@ -539,6 +559,7 @@ offset_bottom = -0.13601685
 text = "-"
 
 [node name="ButtonIncrease" type="Button" parent="Rendering"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.097
@@ -579,6 +600,43 @@ layers = 1015808
 mesh = SubResource("CapsuleMesh_p5o4e")
 skeleton = NodePath("../..")
 
+[node name="SFXHandler" type="Node3D" parent="PlayerCharacter" node_paths=PackedStringArray("SFX_falling", "SFX_landing", "SFX_steps_parent")]
+script = ExtResource("11_7emwf")
+SFX_falling = NodePath("Falling")
+SFX_landing = NodePath("Landing")
+SFX_steps_parent = NodePath("StepSounds")
+
+[node name="StepSounds" type="Node3D" parent="PlayerCharacter/SFXHandler"]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PlayerCharacter/SFXHandler/StepSounds"]
+stream = ExtResource("12_hshwv")
+bus = &"Default"
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="PlayerCharacter/SFXHandler/StepSounds"]
+stream = ExtResource("13_gpjlu")
+bus = &"Default"
+
+[node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="PlayerCharacter/SFXHandler/StepSounds"]
+stream = ExtResource("14_8mwp6")
+bus = &"Default"
+
+[node name="AudioStreamPlayer3D4" type="AudioStreamPlayer3D" parent="PlayerCharacter/SFXHandler/StepSounds"]
+stream = ExtResource("15_qemgg")
+bus = &"Default"
+
+[node name="AudioStreamPlayer3D5" type="AudioStreamPlayer3D" parent="PlayerCharacter/SFXHandler/StepSounds"]
+stream = ExtResource("16_8viyr")
+bus = &"Default"
+
+[node name="Landing" type="AudioStreamPlayer3D" parent="PlayerCharacter/SFXHandler"]
+stream = ExtResource("17_sm0op")
+bus = &"Default"
+
+[node name="Falling" type="AudioStreamPlayer3D" parent="PlayerCharacter/SFXHandler"]
+stream = ExtResource("18_76lrf")
+volume_db = -25.075
+bus = &"Default"
+
 [node name="FPSCamera" type="Node3D" parent="." node_paths=PackedStringArray("CameraSubject")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 script = ExtResource("2_btcbx")
@@ -591,7 +649,7 @@ metadata/_custom_type_script = "uid://bhkr2i22s7c7e"
 remote_path = NodePath("../../../Rendering/SubViewportContainer1/SubViewport1/Camera1")
 
 [node name="Camera3D" type="Camera3D" parent="FPSCamera/Pivot"]
-visible = false
+cull_mask = 32767
 
 [node name="ViewModel" type="Node3D" parent="FPSCamera/Pivot" node_paths=PackedStringArray("Char")]
 script = ExtResource("12_gu6f8")
@@ -603,7 +661,17 @@ ATP_MovementBlendScale = "parameters/Movement/WalkSpeed/scale"
 metadata/_custom_type_script = "uid://byllibf7r26ld"
 
 [node name="Torch" parent="FPSCamera/Pivot/ViewModel" instance=ExtResource("9_00tjw")]
-transform = Transform3D(0.99999976, 0, 0, 0, 0.9996847, -0.025101796, 0, 0.025101794, 0.99968475, 0.5036776, -0.13951361, -0.59074724)
+transform = Transform3D(0.99999976, 0, 0, 0, 0.9999164, -0.012902639, 0, 0.012902638, 0.99991643, 0.5036776, -0.13951361, -0.59074724)
+
+[node name="Extinguish" type="AudioStreamPlayer3D" parent="FPSCamera/Pivot/ViewModel/Torch"]
+stream = ExtResource("22_gpjlu")
+volume_db = 20.299
+max_db = 6.0
+bus = &"Default"
+
+[node name="Burning" type="AudioStreamPlayer3D" parent="FPSCamera/Pivot/ViewModel/Torch"]
+stream = ExtResource("23_8mwp6")
+bus = &"Default"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FPSCamera/Pivot/ViewModel"]
 libraries = {
@@ -656,3 +724,6 @@ update_scale = false
 
 [connection signal="pressed" from="Rendering/ButtonDecrease" to="LoopControl" method="DecreaseRenderers"]
 [connection signal="pressed" from="Rendering/ButtonIncrease" to="LoopControl" method="IncreaseRenderers"]
+[connection signal="Extinguished" from="FPSCamera/Pivot/ViewModel/Torch" to="FPSCamera/Pivot/ViewModel/Torch/Extinguish" method="play"]
+[connection signal="Extinguished" from="FPSCamera/Pivot/ViewModel/Torch" to="FPSCamera/Pivot/ViewModel/Torch/Burning" method="stop"]
+[connection signal="Ignited" from="FPSCamera/Pivot/ViewModel/Torch" to="FPSCamera/Pivot/ViewModel/Torch/Burning" method="play"]

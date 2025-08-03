@@ -67,7 +67,11 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Engine.is_editor_hint(): return
 	
-	AnimMovementAlpha = (Char.velocity * Vector3(1,0,1)).length() / Char.move_speed
+	if not Char.is_on_floor():
+		AnimMovementAlpha = move_toward(AnimMovementAlpha, 0.0, 10 * _delta)
+	else:
+		AnimMovementAlpha = (Char.velocity * Vector3(1,0,1)).length() / Char.move_speed
+	
 	AnimJumpHeld = Char.jump_held
 	AnimGrounded = Char.is_on_floor()
 	

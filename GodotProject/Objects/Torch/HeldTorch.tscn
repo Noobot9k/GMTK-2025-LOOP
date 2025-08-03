@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://66f65hvj8hwt" path="res://Nodes/AnimatedOmniLight3D.gd" id="3_rif7y"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_83bs4"]
-radius = 0.15
+radius = 0.3
 
 [sub_resource type="Curve" id="Curve_snefe"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.29959512, 0.8543103), 0.0, 0.0, 0, 0, Vector2(0.4129554, 0.92155164), 0.0, 0.0, 0, 0, Vector2(0.63157886, 0.75344825), 0.0, 0.0, 0, 0, Vector2(0.72874486, 1), 0.0, 0.0, 0, 0, Vector2(0.882591, 0.8431034), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -39,13 +39,14 @@ turbulence_noise_strength = 11.17
 
 [node name="HeldTorch" type="Area3D" node_paths=PackedStringArray("VisibilityToggles")]
 script = ExtResource("1_ha8f5")
-ExtinguishVelocity = 20.0
+ExtinguishVelocity = 25.0
 OnFire = false
 VisibilityToggles = [NodePath("OmniLight3D")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.595, 0, 0, 0, 1.595, 0, 0, 0, 1.595, 0, 0.38372785, 0)
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.595, 0, 0, 0, 1.595, 0, 0, 0, 1.595, -0.20699677, 0.38372797, 0.042437464)
 shape = SubResource("SphereShape3D_83bs4")
+debug_color = Color(0, 0.5950001, 0.6999999, 1)
 
 [node name="Model" parent="." instance=ExtResource("1_1nkja")]
 transform = Transform3D(0.10000001, 0, 0, 0, 0.10000001, 0, 0, 0, 0.10000001, 0, -2.9802322e-08, 0)
@@ -57,11 +58,11 @@ gi_mode = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44374794, 0)
 visible = false
 light_color = Color(0.6509804, 0.53333336, 0.2901961, 1)
-light_energy = 3.824553
+light_energy = 3.8464565
 script = ExtResource("3_rif7y")
 Playing = true
 AutoPlay = true
-CurrentPlayTime = 0.9590955555555385
+CurrentPlayTime = 0.1008103333349627
 EnergyMultiplier = 4.0
 EnergyOverTime = SubResource("Curve_snefe")
 

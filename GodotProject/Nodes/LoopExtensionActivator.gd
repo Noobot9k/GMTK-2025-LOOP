@@ -1,6 +1,8 @@
 extends Area3D
 class_name LoopExtensionActivator
 
+signal TargetLoopSizeSet
+
 static var Singleton : LoopExtensionActivator
 
 @export var LoopController : LoopControl
@@ -13,6 +15,7 @@ func _ready() -> void:
 
 func SetTargetLoopSize(newLoopSize : float):
 	TargetLoopSize = newLoopSize
+	TargetLoopSizeSet.emit()
 
 func TweenTimeScale(targetTimeScale : float, tweenLength : float = 1) -> Tween:
 	var newTween : Tween = get_tree().create_tween()
