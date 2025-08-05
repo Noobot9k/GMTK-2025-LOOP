@@ -1,0 +1,148 @@
+[gd_scene load_steps=18 format=3 uid="uid://c3iolur7fnwj5"]
+
+[ext_resource type="Texture2D" uid="uid://dydsr3hr7b1gf" path="res://Particles/FireBall02-flipbooks/FireBall02_8x8.tga" id="1_1ecwm"]
+[ext_resource type="Script" uid="uid://66f65hvj8hwt" path="res://Nodes/AnimatedOmniLight3D.gd" id="1_rum1v"]
+[ext_resource type="Script" uid="uid://bmprct4b4bvtb" path="res://Nodes/EnableDisable.gd" id="1_xxs6r"]
+[ext_resource type="Script" uid="uid://cnf7hwbnxwur5" path="res://Nodes/Ignitable.gd" id="2_elerc"]
+[ext_resource type="Shader" uid="uid://dtdv0cvspx4p2" path="res://Objects/FireBridge/Flipbook.tres" id="2_hx5nf"]
+[ext_resource type="Script" uid="uid://c1ej3x8vmhy7f" path="res://Nodes/AutoPlayGPUParticles3D.gd" id="4_xxs6r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hx5nf"]
+size = Vector3(1, 0.1, 2)
+
+[sub_resource type="Curve" id="Curve_fax13"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.23481779, 0.7982758), 0.0, 0.0, 0, 0, Vector2(0.38866395, 0.9999999), 0.0, 0.0, 0, 0, Vector2(0.52226716, 0.7870689), 0.0, 0.0, 0, 0, Vector2(0.66396755, 0.9663792), 0.0, 0.0, 0, 0, Vector2(0.7894736, 0.7982758), 0.0, 0.0, 0, 0, Vector2(0.8582995, 0.8431034), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e20uv"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.4166667, 0, 0.24705882)
+distance_fade_mode = 1
+distance_fade_min_distance = 5.0
+distance_fade_max_distance = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_rum1v"]
+size = Vector3(1, 0.1, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xxs6r"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(2.6126626, 2.6126626, 2.6126626, 1)
+albedo_texture = ExtResource("1_1ecwm")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 8
+particles_anim_loop = true
+
+[sub_resource type="Curve" id="Curve_elerc"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.50769234, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_fax13"]
+curve = SubResource("Curve_elerc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ntdnd"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 0.1, 2)
+direction = Vector3(0, 1, 0)
+spread = 25.0
+initial_velocity_min = 0.099999994
+initial_velocity_max = 0.099999994
+gravity = Vector3(0, 0, 0)
+scale_min = 0.75
+scale_max = 0.75
+alpha_curve = SubResource("CurveTexture_fax13")
+anim_speed_min = 2.0
+anim_speed_max = 2.0
+turbulence_noise_strength = 11.17
+
+[sub_resource type="QuadMesh" id="QuadMesh_dugax"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e20uv"]
+render_priority = 1
+shader = ExtResource("2_hx5nf")
+shader_parameter/FPS = 16.0
+shader_parameter/Tiles = Vector2(8, 8)
+shader_parameter/albedo = ExtResource("1_1ecwm")
+shader_parameter/emission = ExtResource("1_1ecwm")
+shader_parameter/emissionMultiplier = 1.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rum1v"]
+emission_shape = 3
+emission_box_extents = Vector3(0.5, 1, 0.1)
+direction = Vector3(0, 1, 0)
+spread = 25.0
+initial_velocity_min = 0.099999994
+initial_velocity_max = 0.099999994
+gravity = Vector3(0, 0, 0)
+scale_min = 1.5
+scale_max = 1.5
+alpha_curve = SubResource("CurveTexture_fax13")
+anim_speed_min = 2.0
+anim_speed_max = 2.0
+turbulence_noise_strength = 11.17
+
+[node name="FireBridge" type="Node3D" node_paths=PackedStringArray("EnableObjects")]
+script = ExtResource("1_xxs6r")
+EnableObjects = [NodePath("RigidBody3D/CollisionShape3D"), NodePath("Ignitable"), NodePath("GPUParticles3D2"), NodePath("OmniLight3D")]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+gravity_scale = 0.0
+lock_rotation = true
+freeze = true
+freeze_mode = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_hx5nf")
+disabled = true
+
+[node name="Ignitable" type="Area3D" parent="."]
+script = ExtResource("2_elerc")
+OnFire = false
+CanBeProximityIgnited = false
+metadata/_custom_type_script = "uid://cnf7hwbnxwur5"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ignitable"]
+shape = SubResource("BoxShape3D_hx5nf")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+visible = false
+light_color = Color(0.6509804, 0.53333336, 0.2901961, 1)
+light_energy = 2.720705
+omni_range = 10.0
+script = ExtResource("1_rum1v")
+Playing = true
+AutoPlay = true
+CurrentPlayTime = 0.11137855555481056
+EnergyMultiplier = 3.0
+EnergyOverTime = SubResource("Curve_fax13")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+material_override = SubResource("StandardMaterial3D_e20uv")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_rum1v")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+visible = false
+material_override = SubResource("StandardMaterial3D_xxs6r")
+amount = 24
+lifetime = 2.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_ntdnd")
+draw_pass_1 = SubResource("QuadMesh_dugax")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_e20uv")
+emitting = false
+amount = 24
+lifetime = 2.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_rum1v")
+draw_pass_1 = SubResource("QuadMesh_dugax")
+script = ExtResource("4_xxs6r")
+AutoPlay = false

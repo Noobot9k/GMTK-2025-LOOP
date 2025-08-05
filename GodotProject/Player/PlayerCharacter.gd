@@ -35,3 +35,5 @@ func _process(_delta: float) -> void:
 	input_vector = Input.get_vector(\
 		"move_left", "move_right", "move_forward", "move_backward")
 	jump_held = Input.is_action_pressed("jump")
+	
+	super(_delta)

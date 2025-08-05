@@ -1,0 +1,19 @@
+;paint.net Palette File
+;Downloaded from Lospec.com/palette-list
+;Palette Name: Mushroom
+;Description: 
+;Colors: 14
+FF2e222f
+FF45293f
+FF7a3045
+FF993d41
+FFcd683d
+FFfbb954
+FFf2ec8b
+FFb0a987
+FF997f73
+FF665964
+FF443846
+FF576069
+FF788a87
+FFa9b2a2

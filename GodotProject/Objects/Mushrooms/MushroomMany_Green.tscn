@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8xj874w6vurm"]
+
+[ext_resource type="PackedScene" uid="uid://capcxx4lkn6e0" path="res://Objects/Mushrooms/MushroomMany.tscn" id="1_mc0is"]
+[ext_resource type="Texture2D" uid="uid://bgc5sgx8r3662" path="res://Objects/Mushrooms/MushroomGlowing_Albedo.png" id="2_wjdrc"]
+[ext_resource type="Texture2D" uid="uid://b4w2nym5dgnnn" path="res://Objects/Mushrooms/MushroomGlowing_Emit.png" id="3_nn8h8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7ibd"]
+albedo_color = Color(0.23137255, 0.42745098, 0.38431373, 1)
+albedo_texture = ExtResource("2_wjdrc")
+emission_enabled = true
+emission = Color(0.23137255, 0.42745098, 0.38431373, 1)
+emission_energy_multiplier = 2.0
+emission_operator = 1
+emission_texture = ExtResource("3_nn8h8")
+
+[node name="MushroomMany_Green" instance=ExtResource("1_mc0is")]
+
+[node name="MushroomMany" parent="MushroomMany2" index="0"]
+material_override = SubResource("StandardMaterial3D_t7ibd")
+
+[node name="OmniLight3D" parent="." index="1"]
+light_color = Color(0.23137255, 0.42745098, 0.38431373, 1)
+
+[editable path="MushroomMany2"]

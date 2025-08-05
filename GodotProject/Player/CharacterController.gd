@@ -66,6 +66,7 @@ var _jump_held_last_frame : bool = false
 @export var gravity_wall_running : float = 10
 ## Character experiences more gravity after the apex of their jump.
 @export var gravity_wall_running_falling : float = 5
+@export var terminal_velocity : float = 20
 @export var voidout_hight : float = -12
 
 @export_category("Visual Rotation")
@@ -330,6 +331,7 @@ func _physics_process(delta):
 	if is_in_water:
 		velocity = velocity.move_toward(Vector3.ZERO, waterDrag * (v * v * 0.7 * 0.5))
 	
+	velocity = velocity.clampf(-terminal_velocity, terminal_velocity)
 	
 	# wall running
 	if is_wall_running and tick - jump_last_tick > jump_cooldownMS/1000:
@@ -358,11 +360,11 @@ func _physics_process(delta):
 			global_basis = global_basis.slerp(Basis.looking_at(global_basis * Vector3.FORWARD, up_direction), visualRotationBlend)
 	
 	
-	# void out
-	if global_position.y < voidout_hight:
-		global_position.y += -voidout_hight * 2
-		if model: model.teleport()
-		#game_over()
+	## void out
+	#if global_position.y < voidout_hight:
+		#global_position.y += -voidout_hight * 2
+		#if model: model.teleport()
+		##game_over()
 	
 	
 	# particles
@@ -405,6 +407,13 @@ func _physics_process(delta):
 		anim_tree.set(ATV_move_alpha, project_on_plane(velocity, up_direction).length() / move_speed)
 	
 	_jump_held_last_frame = jump_held
+
+func _process(_delta: float) -> void:
+	# void out
+	if global_position.y < voidout_hight:
+		global_position.y += -voidout_hight - 1
+		if model: model.teleport()
+		#game_over()
 
 func game_over():
 	get_tree().reload_current_scene()

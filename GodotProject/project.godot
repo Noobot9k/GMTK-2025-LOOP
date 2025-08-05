@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="GMTK2025"
-run/main_scene="uid://2hlgssnsobk1"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+run/main_scene="uid://l3r6v0po8cax"
+config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -27,6 +27,10 @@ window/size/mode=2
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/smoothing/plugin.cfg")
+
+[global_group]
+
+Player="the player character"
 
 [input]
 
@@ -55,6 +59,25 @@ jump={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
 ]
 }
+renderers_increase={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":61,"key_label":0,"unicode":61,"location":0,"echo":false,"script":null)
+]
+}
+renderers_decrease={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":45,"key_label":0,"unicode":45,"location":0,"echo":false,"script":null)
+]
+}
+
+[layer_names]
+
+3d_render/layer_10="LoopRender1"
+3d_render/layer_16="LoopRender2"
+3d_render/layer_17="LoopRender3"
+3d_render/layer_18="LoopRender4"
+3d_render/layer_19="LoopRender5"
+3d_render/layer_20="LoopRender6"
 
 [rendering]
 
